@@ -54,3 +54,5 @@ instance/
 # Environment variables
 .env
 .env.local
+Start.md
+README.md.old
