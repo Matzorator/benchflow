@@ -1,56 +1,76 @@
-# BenchFlow
+# BenchFlow - React/Express Version
 
-BenchFlow ist ein praxisnahes Werkstatt- und Service-MVP fuer Reparaturprozesse. Der Schwerpunkt liegt nicht auf generischem CRUD, sondern auf einem realistischen Ablauf fuer Annahme, Bearbeitung, Dokumentation, Kostenvoranschlag, Rechnung und Ausgabe.
+BenchFlow ist ein praxisnahes Werkstatt- und Service-MVP fuer Reparaturprozesse. Diese Variante nutzt moderne Web-Technologien mit React, Express und einer nativen SwiftUI-App.
 
-Die laufende Mobile-Roadmap fuer den nativen SwiftUI-Client liegt in `Todo_Mobile.md`.
+Der Schwerpunkt liegt nicht auf generischem CRUD, sondern auf einem realistischen Ablauf fuer Annahme, Bearbeitung, Dokumentation, Kostenvoranschlag, Rechnung und Ausgabe.
 
 ## Ziel des Projekts
 
 BenchFlow ist gleichzeitig:
 - ein benutzbares lokales Werkstatt-Tool
-- ein Portfolio-Projekt mit Fokus auf HTML, CSS, JavaScript, Flask und SQLite
+- ein Portfolio-Projekt mit Fokus auf React, Node.js, Express und modernem Frontend
+- eine Production-ready Architektur
 
 Wichtig dabei:
 - klare Benutzerfuehrung statt Ein-Seiten-Ueberladung
 - echte Werkstattobjekte wie Auftrag, Kunde, Geraet und Dokumentation
-- einfacher, wartbarer MVP statt ueberladenem Framework-Stack
+- moderne Entwickler-Experience mit Vite und React
 
 ## Tech-Stack
 
-- Frontend: serverseitige Templates mit HTML, CSS und etwas JavaScript
-- Backend: Python + Flask
-- Datenbank: SQLite
-- Native Client: Swift / SwiftUI fuer iOS 17+ bzw. macOS 14+
-- Tests: `unittest`
+### Web
+- **Frontend:** React + Vite
+- **Backend:** Node.js + Express
+- **Datenbank:** SQLite oder PostgreSQL
+- **Styling:** CSS3 mit Legacy-CSS Migration
+
+### Mobile
+- **Native iOS/macOS App:** Swift / SwiftUI (iOS 17+, macOS 14+)
+- **Integration:** REST API zum Express-Backend
+
+## Struktur
+
+```text
+frontend/           # React + Vite SPA
+  src/
+    components/
+    pages/
+    App.jsx
+  package.json
+  vite.config.js
+
+BenchFlowNative/    # SwiftUI Native App
+  Sources/
+    Views/
+    ViewModels/
+    Support/
+
+README.md
+.gitignore
+```
 
 ## Lokaler Start
 
+### Web-Version (React + Express)
+
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-python3 app.py
+# Backend
+npm install
+npm run dev
+
+# Frontend (in separatem Terminal)
+cd frontend
+npm install
+npm run dev
 ```
 
 Danach im Browser oeffnen:
+- Frontend: `http://localhost:5173`
+- Backend: `http://localhost:3000`
 
-- `http://127.0.0.1:5000`
+### Native App (SwiftUI)
 
-## Projektstruktur
-
-```text
-app/
-  __init__.py
-  db.py
-  routes.py
-  schema.sql
-  static/
-  templates/
-tests/
-instance/
-README.md
-Start.md
-```
+Siehe `BenchFlowNative/README-Xcode.md` fuer Xcode Setup-Anweisungen.
 
 Wichtige Dateien:
 - `app/routes.py`: zentrale Flask-Routen, Formularverarbeitung, PDF-Erzeugung, Workflow-Logik
