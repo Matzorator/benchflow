@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interner Beleg {{ order["order_number"] }} - BenchFlow</title>
+    <script>
+        (() => {
+            const storedTheme = localStorage.getItem("benchflow-theme");
+            if (storedTheme === "light" || storedTheme === "dark") {
+                document.documentElement.dataset.theme = storedTheme;
+            }
+        })();
+    </script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="print-body internal-print-body">
+    <main class="print-layout">
+        <section class="print-toolbar no-print">
+            <a href="{{ url_for('benchflow.order_detail', order_id=order['id']) }}" class="ghost-button">Zurück zum Auftrag</a>
+            <button type="button" class="primary-button" onclick="window.print()">Internen Beleg drucken</button>
+        </section>
+
+        <section class="print-sheet internal-print-sheet">
+            <header class="print-header">
+                <div>
+                    <img src="{{ url_for('static', filename='Benchflow_Logo.png') }}" alt="BenchFlow" class="print-logo">
+                    <p class="eyebrow">BenchFlow Interner Werkstattbeleg</p>
+                    <h1>{{ order["order_number"] }}</h1>
+                    <p class="lead">{{ order["manufacturer"] }} {{ order["model"] }} für {{ order["customer_name"] }}</p>
+                </div>
+                <div class="print-status-box">
+                    <span>Status</span>
+                    <strong>{{ order["status"] }}</strong>
+                    <p>Annahme {{ order["intake_date"] }}</p>
+                </div>
+            </header>
+
+            <section class="internal-label-grid">
+                <article class="print-card label-card">
+                    <div class="label-card-head">
+                        <div>
+                            <h2>Sticker / Label</h2>
+                            <p class="label-card-copy">Für Regalplatz, Werkbank oder Gerät.</p>
+                        </div>
+                    </div>
+                    <div class="label-sheet">
+                        <div class="label-copy">
+                            <span class="label-kicker">Bearbeitungsnummer</span>
+                            <strong class="label-order">{{ order["order_number"] }}</strong>
+                            <span class="label-line">Kd: {{ label_customer_short }}</span>
+                            <span class="label-line">{{ label_device_text }}</span>
+                        </div>
+                        <div class="label-qr">
+                            <img src="{{ qr_image_data }}" alt="QR-Code für {{ order['order_number'] }}">
+                        </div>
+                    </div>
+                    <div class="label-meta">
+                        <span>Scan öffnet später die Auftragszuordnung.</span>
+                    </div>
+                </article>
+
+                <article class="print-card">
+                    <h2>Kurzübersicht</h2>
+                    <dl class="print-list print-list-compact">
+                        <div>
+                            <dt>Kunde</dt>
+                            <dd>{{ order["customer_name"] }}</dd>
+                        </div>
+                        <div>
+                            <dt>Firma</dt>
+                            <dd>{{ order["company_name"] or "-" }}</dd>
+                        </div>
+                        <div>
+                            <dt>Telefon</dt>
+                            <dd>{{ order["customer_phone"] or "-" }}</dd>
+                        </div>
+                        <div>
+                            <dt>Kontaktweg</dt>
+                            <dd>{{ order["customer_preferred_contact_label"] }}</dd>
+                        </div>
+                        <div>
+                            <dt>Gerät</dt>
+                            <dd>{{ order["manufacturer"] }} {{ order["model"] }}</dd>
+                        </div>
+                        <div>
+                            <dt>Seriennummer</dt>
+                            <dd>{{ order["serial_number"] or "-" }}</dd>
+                        </div>
+                        <div>
+                            <dt>Zubehör</dt>
+                            <dd>{{ order["accessories"] or "-" }}</dd>
+                        </div>
+                        <div>
+                            <dt>Technik</dt>
+                            <dd>{{ order["technician"] }}</dd>
+                        </div>
+                        <div>
+                            <dt>Adresse</dt>
+                            <dd>{% if order["customer_street"] or order["customer_postal_code"] or order["customer_city"] %}{{ order["customer_street"] }}{% if order["customer_street"] and (order["customer_postal_code"] or order["customer_city"]) %}, {% endif %}{{ order["customer_postal_code"] }} {{ order["customer_city"] }}{% else %}-{% endif %}</dd>
+                        </div>
+                    </dl>
+                </article>
+            </section>
+
+            <section class="print-grid">
+                <article class="print-card">
+                    <h2>Angegebener Fehler</h2>
+                    <div class="print-copy-block">
+                        <span class="print-copy-label">Fehlerbeschreibung</span>
+                        <p class="print-copy-text">{{ order["issue_description"] }}</p>
+                    </div>
+                </article>
+
+                <article class="print-card">
+                    <h2>Interne Angaben</h2>
+                    <dl class="print-list print-list-compact">
+                        <div>
+                            <dt>Diagnosequelle</dt>
+                            <dd>{{ order["diagnostic_source"] }}</dd>
+                        </div>
+                        <div>
+                            <dt>Garantie</dt>
+                            <dd>{{ order["warranty_status"] }}</dd>
+                        </div>
+                        <div>
+                            <dt>Kostenvoranschlag</dt>
+                            <dd>{{ order["quote_required"] }}</dd>
+                        </div>
+                        <div>
+                            <dt>Zustand bei Annahme</dt>
+                            <dd>{{ order["condition_notes"] or "-" }}</dd>
+                        </div>
+                    </dl>
+                </article>
+            </section>
+
+            <section class="print-grid print-grid-wide">
+                <article class="print-card">
+                    <h2>Interne Notizen</h2>
+                    <div class="print-notes">{{ order["internal_notes"] or "Keine internen Notizen vorhanden." }}</div>
+                </article>
+
+                <article class="print-card">
+                    <h2>Statushistorie</h2>
+                    <div class="print-history print-history-compact">
+                        {% for entry in status_history %}
+                        <article class="print-history-entry">
+                            <strong>{{ entry["status"] }}</strong>
+                            <span>{{ entry["changed_at"][:16].replace("T", " ") }}</span>
+                            <p>{{ entry["note"] }}</p>
+                        </article>
+                        {% endfor %}
+                    </div>
+                </article>
+            </section>
+
+            {% if order_media %}
+            <section class="print-card">
+                <h2>Bilddokumentation</h2>
+                <div class="print-media-grid">
+                    {% for media in order_media %}
+                    <div class="print-image-wrap">
+                        <img src="{{ media['media_data'] }}" alt="Dokumentationsfoto {{ order['manufacturer'] }} {{ order['model'] }}" class="device-image-preview">
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+            {% endif %}
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}Datenschutz - BenchFlow{% endblock %}
+
+{% block content %}
+<section class="page-intro page-intro-wide">
+    <div>
+        <p class="eyebrow">Rechtliches</p>
+        <h1>Datenschutz</h1>
+        <p class="lead">Diese Seite dokumentiert den Datenschutzansatz des BenchFlow-MVP. Sie ist als belastbare Projektgrundlage gedacht und muss vor echtem Produktiveinsatz auf den konkreten Betreiber angepasst werden.</p>
+    </div>
+</section>
+
+<section class="legal-layout">
+    <article class="detail-card legal-card">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">1. Verantwortlicher</p>
+                <h2>Projekt- und Betreiberhinweis</h2>
+            </div>
+        </div>
+        <p>BenchFlow ist derzeit ein Portfolio- und Werkstatt-MVP. Verantwortlicher im Sinne der DSGVO ist die natürliche oder juristische Person, die BenchFlow im konkreten Einsatz betreibt.</p>
+        <p>Vor einem Live-Einsatz mit echten Kundendaten muessen an dieser Stelle Name, Anschrift, Kontaktadresse und gegebenenfalls Datenschutzkontakt des tatsaechlichen Betreibers ergaenzt werden.</p>
+    </article>
+
+    <article class="detail-card legal-card">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">2. Verarbeitete Daten</p>
+                <h2>Werkstatt- und Kundendaten</h2>
+            </div>
+        </div>
+        <ul class="legal-list">
+            <li>Kundenstammdaten wie Name, Firma, Telefonnummer, E-Mail-Adresse und Anschrift</li>
+            <li>Auftragsdaten wie Bearbeitungsnummer, Status, Fehlerbild, interne Notizen und Historie</li>
+            <li>Geraetedaten wie Kategorie, Hersteller, Modell, Seriennummer, Zubehoer und Zustandsbeschreibung</li>
+            <li>Anhaenge wie Fotos, PDFs, Kostenvoranschlaege, Rechnungen und interne Dokumenthinweise</li>
+        </ul>
+    </article>
+
+    <article class="detail-card legal-card">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">3. Zwecke</p>
+                <h2>Warum die Daten verarbeitet werden</h2>
+            </div>
+        </div>
+        <ul class="legal-list">
+            <li>Annahme, Bearbeitung, Dokumentation und Ausgabe von Werkstattauftraegen</li>
+            <li>Kontakt mit Kunden zu Rueckfragen, Freigaben, Kostenvoranschlaegen und Rechnungen</li>
+            <li>Nachvollziehbarkeit von Statuswechseln, Bearbeitungsschritten und Werkstattentscheidungen</li>
+            <li>Erstellung von Belegen, PDF-Dokumenten und internen Werkstattunterlagen</li>
+        </ul>
+    </article>
+
+    <article class="detail-card legal-card">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">4. Rechtsgrundlagen</p>
+                <h2>DSGVO-Einordnung</h2>
+            </div>
+        </div>
+        <p>Im realen Einsatz wird die Verarbeitung typischerweise auf Art. 6 Abs. 1 lit. b DSGVO gestuetzt, soweit Kundendaten zur Durchfuehrung eines Reparatur- oder Serviceauftrags erforderlich sind. Fuer gesetzliche Aufbewahrungspflichten kann zusaetzlich Art. 6 Abs. 1 lit. c DSGVO einschlaegig sein.</p>
+        <p>Diese Einordnung ist vor dem Produktiveinsatz fuer den konkreten Werkstattbetrieb rechtlich zu pruefen und gegebenenfalls zu ergaenzen.</p>
+    </article>
+
+    <article class="detail-card legal-card">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">5. Technischer Stand</p>
+                <h2>Lokale Verarbeitung im MVP</h2>
+            </div>
+        </div>
+        <ul class="legal-list">
+            <li>BenchFlow speichert Daten aktuell lokal in einer SQLite-Datenbank.</li>
+            <li>Dateianhaenge werden direkt im Projektkontext verarbeitet und nicht automatisch an externe Dritte uebertragen.</li>
+            <li>Es werden aktuell keine Drittanbieter-Tracker, keine Analyse-Tools und kein externer Cookie-Dienst eingebunden.</li>
+            <li>Der Theme-Schalter speichert lediglich die Darstellungswahl im Browser per `localStorage`.</li>
+            <li>Der KVA-Mailfluss nutzt derzeit einen lokalen `mailto:`-Aufruf statt eines serverseitigen SMTP-Versands.</li>
+        </ul>
+    </article>
+
+    <article class="detail-card legal-card">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">6. Empfaenger</p>
+                <h2>Weitergabe von Daten</h2>
+            </div>
+        </div>
+        <p>Im aktuellen Projektstand ist keine automatische Weitergabe an externe Dienstleister vorgesehen. Bei kuenftiger Nutzung von Hosting-, E-Mail-, Backup-, Cloud- oder Analyseanbietern muessen Empfaenger, Auftragsverarbeitungsvertraege und gegebenenfalls Drittlandtransfers gesondert dokumentiert werden.</p>
+    </article>
+
+    <article class="detail-card legal-card">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">7. Speicherdauer</p>
+                <h2>Aufbewahrung und Loeschung</h2>
+            </div>
+        </div>
+        <p>Der MVP enthaelt derzeit keine ausformulierte Loesch- und Aufbewahrungslogik fuer Produktivdaten. Vor echtem Einsatz sollten fuer Kunden-, Auftrags-, Rechnungs- und Dokumentdaten klare Aufbewahrungsfristen und ein praktikabler Loeschprozess festgelegt werden.</p>
+    </article>
+
+    <article class="detail-card legal-card">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">8. Rechte</p>
+                <h2>Betroffenenrechte</h2>
+            </div>
+        </div>
+        <p>Betroffene Personen haben nach Massgabe der DSGVO insbesondere Rechte auf Auskunft, Berichtigung, Loeschung, Einschraenkung der Verarbeitung, Datenuebertragbarkeit und Widerspruch. Im Produktiveinsatz muss ein klarer interner Prozess vorhanden sein, wie diese Rechte fristgerecht bearbeitet werden.</p>
+    </article>
+
+    <article class="detail-card legal-card legal-note-card">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">Portfolio-Hinweis</p>
+                <h2>Bewusst dokumentierter Projektstand</h2>
+            </div>
+        </div>
+        <p>Diese Datenschutzseite ist bewusst Teil des Projekts, um zu zeigen, dass BenchFlow nicht nur UI, Datenmodell und Werkstattlogik betrachtet, sondern auch den organisatorischen und rechtlichen Rahmen einer realen Fachanwendung mitdenkt.</p>
+    </article>
+</section>
+{% endblock %}

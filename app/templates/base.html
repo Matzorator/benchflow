@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}BenchFlow{% endblock %}</title>
+    <script>
+        (() => {
+            const storedTheme = localStorage.getItem("benchflow-theme");
+            if (storedTheme === "light" || storedTheme === "dark") {
+                document.documentElement.dataset.theme = storedTheme;
+            }
+        })();
+    </script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body{% block body_attrs %}{% endblock %}>
+    {% block body %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <section class="toast-stack" aria-live="polite" aria-atomic="true">
+        {% for category, message in messages %}
+        <article class="toast toast-{{ category }}" data-toast>
+            <div class="toast-mark"></div>
+            <div class="toast-copy">
+                <strong>{{ "Erfolg" if category == "success" else "Hinweis" if category == "info" else "Achtung" }}</strong>
+                <p>{{ message }}</p>
+            </div>
+            <button type="button" class="toast-close" data-toast-close aria-label="Meldung schließen">×</button>
+        </article>
+        {% endfor %}
+    </section>
+    {% endif %}
+    {% endwith %}
+    <main class="layout">
+        {% include "partials/nav.html" %}
+
+        {% block content %}{% endblock %}
+
+        <footer class="site-footer">
+            <div class="site-footer-copy">
+                <strong>BenchFlow</strong>
+                <p>Portfolio- und MVP-Projekt fuer Werkstattprozesse. Rechtstexte und Verantwortlichendaten bitte vor echtem Produktiveinsatz anpassen.</p>
+            </div>
+            <nav class="site-footer-links" aria-label="Rechtliches">
+                <a href="{{ url_for('benchflow.privacy_page') }}">Datenschutz</a>
+                <a href="{{ url_for('benchflow.legal_notice_page') }}">Impressum</a>
+            </nav>
+        </footer>
+    </main>
+    <script>
+        const themeToggle = document.querySelector("[data-theme-toggle]");
+        const syncThemeToggle = () => {
+            if (!themeToggle) return;
+            const theme = document.documentElement.dataset.theme === "light" ? "light" : "dark";
+            const targetTheme = theme === "light" ? "dark" : "light";
+            themeToggle.textContent = targetTheme === "dark" ? "Dark Mode" : "Light Mode";
+            themeToggle.dataset.themeTarget = targetTheme;
+            themeToggle.setAttribute("aria-pressed", String(theme === "light"));
+        };
+
+        if (themeToggle) {
+            themeToggle.addEventListener("click", () => {
+                const nextTheme = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+                document.documentElement.dataset.theme = nextTheme;
+                localStorage.setItem("benchflow-theme", nextTheme);
+                syncThemeToggle();
+            });
+            syncThemeToggle();
+        }
+
+        document.querySelectorAll("[data-toast]").forEach((toast, index) => {
+            const dismiss = () => {
+                toast.classList.add("is-leaving");
+                window.setTimeout(() => toast.remove(), 220);
+            };
+            const closeButton = toast.querySelector("[data-toast-close]");
+            if (closeButton) {
+                closeButton.addEventListener("click", dismiss);
+            }
+            window.setTimeout(dismiss, 3200 + index * 180);
+        });
+    </script>
+    {% endblock %}
+</body>
+</html>
