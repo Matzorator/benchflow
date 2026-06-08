@@ -1,174 +1,221 @@
-# BenchFlow
+# 🔧 BenchFlow - Werkstatt & Service MVP
 
-BenchFlow ist ein praxisnahes Werkstatt- und Service-MVP fuer Reparaturprozesse.
-Der Schwerpunkt liegt nicht auf generischem CRUD, sondern auf einem realistischen
-Ablauf fuer Annahme, Bearbeitung, Dokumentation, Kostenvoranschlag, Rechnung und Ausgabe.
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+![Swift](https://img.shields.io/badge/Swift-F05138?style=for-the-badge&logo=swift&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
 
-## Ziel des Projekts
+> **Ein praxisnahes Werkstatt- und Service-MVP für Reparaturprozesse. Kein generisches CRUD –
+> sondern ein realistischer Ablauf für Annahme, Bearbeitung, Dokumentation, Kostenvoranschlag,
+> Rechnung und Ausgabe. Inklusive nativer iOS-App (SwiftUI).**
 
-BenchFlow ist gleichzeitig:
-- ein benutzbares lokales Werkstatt-Tool
-- ein Portfolio-Projekt mit Fokus auf HTML, CSS, JavaScript, Flask und SQLite
-- ein nativer iOS-Client: die SwiftUI-App entstand parallel im Rahmen eines Swift-Kurses
-  und setzt die Web-Oberflaeche als vollstaendige iPhone-App um
+---
 
-Wichtig dabei:
-- klare Benutzerfuehrung statt Ein-Seiten-Ueberladung
-- echte Werkstattobjekte wie Auftrag, Kunde, Geraet und Dokumentation
-- einfacher, wartbarer MVP statt ueberladenem Framework-Stack
+## 🎬 Demo
 
-## Tech-Stack
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
+*Zentrale Übersicht mit Kennzahlen und Schnellzugriffen*
 
-| Bereich         | Technologie                        |
-|-----------------|------------------------------------|
-| Frontend        | HTML, CSS, JavaScript (serverseitig gerendert via Flask/Jinja2) |
-| Backend         | Python + Flask                     |
-| Datenbank       | SQLite                             |
-| Native App      | Swift / SwiftUI (iOS 17+, macOS 14+) |
-| Tests           | Python `unittest`                  |
-| Build (iOS)     | XcodeGen (`project.yml`)           |
+### Auftragsdetail
+![Auftragsdetail](screenshots/order_detail.png)
+*Detailseite als Arbeitsbereich: Status, KVA, Rechnung, Anhänge in einem View*
 
-## Entstehung und Arbeitsweise
+### Nativer iOS-Client
+![SwiftUI App](screenshots/swiftui_app.png)
+*BenchFlow als iPhone-App – gleiche Daten, native SwiftUI-Oberfläche*
 
-BenchFlow ist ein Eigenprojekt im Rahmen meiner Weiterbildung zum Fullstack Webentwickler.
+### PDF-Ausgabe
+![PDF Kostenvoranschlag](screenshots/pdf_kva.png)
+*Serverseitig erzeugter Kostenvoranschlag als druckfertiges PDF*
 
-Das Projekt wurde eigenstaendig konzipiert, strukturiert und entwickelt.
-Bei der Umsetzung habe ich gezielt KI-gestuetzte Werkzeuge (u.a. als Pair-Programmer,
-fuer Code-Reviews und zur Klaerung technischer Fragen) eingesetzt – aehnlich wie
-Entwickler heute Linter, Dokumentation oder Stack Overflow nutzen.
+---
 
-Alle Architekturentscheidungen, der Workflow-Entwurf und das Debugging
-lagen durchgehend bei mir.
-
-## Lokaler Start
+## ⚡ Quick Start
 
 ```bash
+# 1. Repository klonen
+git clone https://github.com/Matzorator/benchflow.git
+cd benchflow
+
+# 2. Virtualenv & Abhängigkeiten
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+
+# 3. App starten
 python3 app.py
 ```
 
-Danach im Browser oeffnen: `http://127.0.0.1:5000`
+**Dann im Browser öffnen:** `http://127.0.0.1:5000` 🎉
 
-> Fuer den nativen iOS-Client: siehe `BenchFlowNative/README-Xcode.md`
+> Für den nativen iOS-Client: siehe [`BenchFlowNative/README-Xcode.md`](BenchFlowNative/README-Xcode.md)
 
-## Projektstruktur
+---
 
-```text
-app/
-  __init__.py
-  db.py
-  routes.py
-  api.py
-  schema.sql
-  static/
-  templates/
-tests/
-BenchFlowNative/
-instance/
-README.md
-```
+## ✨ Highlights
 
-Wichtige Dateien:
-- `app/routes.py` – Flask-Routen, Formularverarbeitung, PDF-Erzeugung, Workflow-Logik
-- `app/api.py` – JSON-API fuer den nativen SwiftUI-Client
-- `app/db.py` – DB-Zugriff, Migrationen und Seed-Daten
-- `app/schema.sql` – SQLite-Schema
-- `app/static/styles.css` – Theme, Layout und Print-Styling
-- `tests/test_app_flows.py` – Kernfluss-Tests
-- `tests/test_api_flows.py` – API-Tests
-- `BenchFlowNative/` – SwiftUI-App mit APIClient, Models, ViewModels und Views
-- `BenchFlowNative/project.yml` – XcodeGen-Spezifikation fuer das iOS-17-Xcode-Projekt
-- `BenchFlowNative/README-Xcode.md` – Startanleitung fuer Xcode und die Live-API
+- 📋 **Echter Werkstattworkflow** – Annahme → Bearbeitung → KVA → Rechnung → Ausgabe
+- 📄 **PDF-Erzeugung** – Kostenvoranschlag und Rechnung serverseitig als druckfertiges PDF
+- 📱 **Native iOS-App** – SwiftUI-Client mit vollständiger API-Anbindung (Swift-Kurs-Projekt)
+- 🔍 **Kundenmanagement** – Stammdaten, Suchfluss, Auftragshistorie
+- 🗂️ **Dokumentenverwaltung** – Bilder & PDFs pro Auftrag, typisiert und umtypisierbar
+- 🧪 **Getesteter Code** – `unittest`-Suite mit über 30 abgedeckten Flows
 
-## Funktionsumfang
+<details>
+<summary>📋 Alle Features anzeigen</summary>
 
-### Auftragsworkflow
+### 📋 Auftragsworkflow
+- ✅ Dashboard mit Kennzahlen und Schnellzugriffen
+- ✅ Eigene Listen für aktive Aufträge und Archiv
+- ✅ Sortierung über Spaltenköpfe (ASC/DESC)
+- ✅ Annahmefluss für neue Aufträge mit Kundensuche
+- ✅ Detailseite als zentraler Arbeitsbereich pro Auftrag
+- ✅ Statushistorie und Archivierung statt Löschen
 
-- Dashboard mit Uebersicht und Schnellzugriffen
-- eigene Listen fuer aktive Auftraege und Archiv
-- Sortierung ueber Spaltenkoepfe (ASC/DESC)
-- eigener Annahmefluss fuer neue Auftraege
-- Detailseite als zentraler Arbeitsbereich pro Auftrag
-- Statushistorie und Archivierung statt Loeschen
+### 👥 Kunden & Geräte
+- ✅ Getrennte Kunden- und Gerätedaten
+- ✅ Erweitertes Stammdatenmodell (Firma, Adresse, Kontaktweg, interne Notiz)
+- ✅ Kundensuche direkt in der Auftragserfassung
+- ✅ Kundenliste mit Suche und Aktivfilter
+- ✅ Kundendetailseite mit Auftragshistorie
+- ✅ Datenschutzkonformes Demo-Datenset (keine echten Personen)
 
-### Kunden und Geraete
+### 📄 Dokumente & Anhänge
+- ✅ Mehrere Bilder und PDFs pro Auftrag
+- ✅ Dokumenttypen: KVA, Rechnung, Prüfprotokoll, Herstellerunterlage, Lieferschein, Servicebericht
+- ✅ Nachträgliches Umtypisieren bestehender Dokumente
 
-- getrennte Kunden- und Geraetedaten mit erweitertem Stammdatenmodell
-- Kundensuche bereits in der Auftragserfassung
-- eigene Kundenliste mit Suche und Aktivfilter
-- eigene Kundendetailseite mit bisherigen Auftraegen
-- Demo-Datenbasis mit fiktiven Namen, Firmen und Adressen (datenschutzkonform)
+### 🖨️ Druck & PDF
+- ✅ Kundenbeleg und interner Werkstattbeleg (druckoptimiert)
+- ✅ Label-/Stickerbereich mit QR-Code
+- ✅ Serverseitig erzeugter KVA als PDF
+- ✅ Serverseitig erzeugte Rechnung als PDF
+- ✅ KVA-Mailvorbereitung via `mailto:` mit vorausgefüllten Feldern
+- ✅ Direkte KVA-zu-Rechnung-Übernahme mit Bestätigungsdialog
 
-### Dokumentation und Unterlagen
+### 📱 Nativer SwiftUI-Client
+- ✅ Vollständige iPhone-App (iOS 17+) mit REST-API-Anbindung
+- ✅ Eigenes visuelles Design: dunkle Panels, Cyan-Akzente, flache BenchFlow-Navigation
+- ✅ Alle Kernflows nativ: Aufträge, Archiv, Kunden, KVA, Rechnung, Anhänge
+- ✅ Light/Dark-Mode mit Theme-Spiegelung in eingebettete WebViews
+- ✅ XcodeGen-Projekt für reproduzierbares Xcode-Setup
+- ✅ Fallback-Logik bei älteren API-Versionen
 
-- mehrere Bilder und PDF-Unterlagen pro Auftrag
-- Dokumenttypen: Kostenvoranschlag, Rechnung, Pruefprotokoll, Herstellerunterlage,
-  Lieferschein, Servicebericht
-- nachtraegliches Umtypisieren bestehender Dokumente
+### 🌐 JSON-API
+- ✅ REST-API als Bindeglied zwischen Flask-Backend und SwiftUI-Client
+- ✅ Vollständige Abdeckung: Dashboard, Aufträge, Archiv, Kunden, KVA, Rechnung, Anhänge
+- ✅ `/api/meta` liefert Picker-Optionen für Status, Kategorien, Hersteller, Dokumenttypen
 
-### Druck- und PDF-Flows
+### 🎨 UI (Web)
+- ✅ Technischer Darkmode, zuschaltbarer Lightmode mit Persistenz
+- ✅ Listenansicht für Desktop
+- ✅ Toast-Benachrichtigungen statt statischer Flash-Boxen
 
-- Kundenbeleg und interner Werkstattbeleg (druckoptimiert)
-- interner Label-/Stickerbereich mit QR-Code
-- serverseitig erzeugter Kostenvoranschlag als PDF
-- serverseitig erzeugte Rechnung als PDF
-- KVA-Mailvorbereitung via `mailto:` mit vorausgefuellten Feldern
-- freigegebener KVA kann direkt in eine Rechnung uebernommen werden
+</details>
 
-### JSON-API
+---
 
-Die REST-API verbindet Flask-Backend und SwiftUI-Client:
+## 🗺️ Roadmap
+
+### 🎯 Version 1.0 (Aktuell)
+- ✅ Vollständiger Auftragsworkflow
+- ✅ KVA- und Rechnungsflow mit PDF-Ausgabe
+- ✅ Dokumentenverwaltung mit Typisierung
+- ✅ JSON-API für nativen iOS-Client
+- ✅ SwiftUI-App (iOS 17+)
+
+### 🔄 Version 2.0 (Geplant)
+- 🔨 **Zahlungs- und Versandvermerke** bei Rechnungen
+- 🔨 **SMTP-Mailversand** statt `mailto:`-Flow
+- 🔨 **Firmen-/Ortsfilter** in der Kundenliste
+- 🔨 **Erweiterte Dokumentenfreigabe** mit Genehmigungsprozess
+
+---
+
+## 🛠️ Tech-Stack
+
+| Bereich | Technologie |
+|---|---|
+| Frontend | HTML, CSS, JavaScript (serverseitig via Flask/Jinja2) |
+| Backend | Python + Flask |
+| Datenbank | SQLite |
+| Native App | Swift / SwiftUI (iOS 17+, macOS 14+) |
+| Tests | Python `unittest` |
+| Build (iOS) | XcodeGen (`project.yml`) |
+
+---
+
+## 🌐 API-Übersicht
 
 | Endpunkt | Beschreibung |
 |---|---|
 | `/api/meta` | Picker-Optionen (Status, Kategorien, Hersteller, Dokumenttypen) |
-| `/api/dashboard` | Kennzahlen und zuletzt bearbeitete Auftraege |
+| `/api/dashboard` | Kennzahlen und zuletzt bearbeitete Aufträge |
 | `/api/orders`, `/api/orders/<id>` | Auftragsliste und Auftragsdetail |
-| `/api/archive` | Archivierte Auftraege |
+| `/api/archive` | Archivierte Aufträge |
 | `/api/orders/<id>/quote` | KVA-Daten lesen und speichern |
 | `/api/orders/<id>/invoice` | Rechnungsdaten lesen und speichern |
-| `/api/orders/<id>/quote/email` | Vorbereiteter Mailflow fuer KVA |
-| `/api/orders/<id>/attachments` | Bild-/PDF-Anhaenge verwalten |
+| `/api/orders/<id>/quote/email` | Vorbereiteter Mailflow für KVA |
+| `/api/orders/<id>/attachments` | Bild-/PDF-Anhänge verwalten |
 | `/api/customers`, `/api/customers/<id>` | Kundenliste und Kundendetail |
 
-### Nativer SwiftUI-Client (`BenchFlowNative/`)
+---
 
-Parallel zur Web-App entstand im Rahmen eines iOS-Kurses eine vollstaendige SwiftUI-App
-fuer iPhone (iOS 17+):
-
-- eigenes visuelles Design: dunkle Panel-Flaechen, cyanfarbene Akzente, flache
-  BenchFlow-Navigation statt Standard-iOS-Chrome
-- Auftragsliste, Archiv, Kundenliste und Detailseiten als native Screens
-- KVA- und Rechnungsflow komplett nativ, inkl. direkter KVA-zu-Rechnung-Uebernahme
-- Bild- und PDF-Anhaenge ueber die REST-API
-- Light/Dark-Mode mit Theme-Spiegelung in eingebettete WebViews
-- Fallback-Logik bei aelteren API-Versionen (z.B. fehlende Herstellerliste)
-- XcodeGen-Projekt (`project.yml`) fuer reproduzierbares Xcode-Setup
-- ATS-Ausnahme fuer lokalen Entwicklungsserver ohne globale HTTP-Freigabe
-
-### UI (Web)
-
-- technischer Darkmode, zuschaltbarer Lightmode mit Persistenz
-- Listenansicht fuer Desktop
-- Toast-Benachrichtigungen statt statischer Flash-Boxen
-
-## Routenueberblick
+## 🌐 Web-Routen
 
 | Route | Beschreibung |
 |---|---|
-| `/dashboard` | Uebersicht |
-| `/orders` | Aktive Auftraege |
+| `/dashboard` | Übersicht |
+| `/orders` | Aktive Aufträge |
 | `/orders/new` | Neuer Auftrag |
 | `/orders/<id>` | Auftragsdetail |
-| `/archive` | Archivierte Auftraege |
+| `/archive` | Archivierte Aufträge |
 | `/customers` | Kundenliste |
 | `/customers/<id>` | Kundendetailseite |
 | `/orders/<id>/print` | Kundenbeleg |
 | `/orders/<id>/print/internal` | Interner Beleg |
 
-## Tests
+---
+
+## 📁 Projektstruktur
+
+```
+benchflow/
+│
+├── app.py                      # App-Einstiegspunkt
+├── requirements.txt
+├── README.md
+│
+├── app/
+│   ├── __init__.py
+│   ├── routes.py               # Flask-Routen, PDF-Erzeugung, Workflow-Logik
+│   ├── api.py                  # JSON-API für den SwiftUI-Client
+│   ├── db.py                   # DB-Zugriff, Migrationen, Seed-Daten
+│   ├── schema.sql              # SQLite-Schema
+│   ├── static/
+│   │   └── styles.css          # Theme, Layout, Print-Styling
+│   └── templates/              # Jinja2-Seiten und Druckansichten
+│
+├── tests/
+│   ├── test_app_flows.py       # Kernfluss-Tests
+│   └── test_api_flows.py       # API-Tests
+│
+├── BenchFlowNative/            # SwiftUI-App
+│   ├── project.yml             # XcodeGen-Konfiguration
+│   ├── README-Xcode.md         # Startanleitung für Xcode
+│   └── BenchFlowNative/        # Quellcode: APIClient, Models, ViewModels, Views
+│
+└── instance/                   # SQLite-Datenbankdatei (lokal, nicht versioniert)
+```
+
+---
+
+## 🧪 Tests
 
 ```bash
 python3 -m unittest discover -s tests -p "test_*.py"
@@ -180,28 +227,93 @@ Optionaler Syntax-Check:
 python3 -m compileall app.py app tests
 ```
 
-Die Test-Suite deckt ab: Auftragsanlage und -aktualisierung, Kundenfluss,
-Bild- und PDF-Anhaenge, KVA- und Rechnungsworkflow, Archivierung,
-Druck-Endpunkte sowie die komplette JSON-API.
+<details>
+<summary>📋 Abgedeckte Test-Flows</summary>
 
-## Aktueller Stand
+- ✅ Auftrag anlegen und aktualisieren
+- ✅ Kundenübernahme in der Erfassung
+- ✅ Kundenliste und Kundenfilter
+- ✅ Kundendetailseite
+- ✅ Bild- und PDF-Anhänge
+- ✅ Dokumenttypen und Dokumenthinweise
+- ✅ KVA-Workflow
+- ✅ Vorbereiteter KVA-Mailflow
+- ✅ Rechnungsworkflow
+- ✅ Archivieren und Wiederherstellen
+- ✅ Kunden- und interner Beleg
+- ✅ JSON-API: Dashboard, Auftragsdetail, Kundenliste, KVA/Rechnung, Attachment-Upload
 
-BenchFlow ist deutlich ueber ein reines CRUD-MVP hinaus:
-- Mehrseitenstruktur mit dokumentierten Werkstattablaeufen
-- vollstaendiger KVA- und Rechnungsfluss inkl. PDF-Ausgabe
-- parallele JSON-API fuer den nativen iOS-Client
-- SwiftUI-App als vollwertige mobile Umsetzung
-- datenschutzkonformes Demo-Datenset (keine echten Personen- oder Firmennamen)
+</details>
 
-## Bekannte Grenzen
+---
+
+## ⚠️ Bekannte Grenzen
 
 - Mailversand ist bewusst ein vorbereiteter `mailto:`-Flow, kein SMTP-Versand
-- KVA und Rechnung koennen bei Bedarf um weitere kaufmaennische Pflichtangaben
-  erweitert werden
-- die Test-Suite ist pragmatisch und nicht als vollstaendige Integrationsabdeckung gedacht
+- KVA und Rechnung können bei Bedarf um weitere kaufmännische Pflichtangaben erweitert werden
+- Die Test-Suite ist pragmatisch und nicht als vollständige Integrationsabdeckung gedacht
 
-## Naechste sinnvolle Schritte
+---
 
-- optionale Versand- oder Zahlungsvermerke bei Rechnungen
-- Firmen-/Ortsfilter oder Schnellaktionen in der Kundenliste
-- Dokumentenverwaltung bei Bedarf um Freigabeprozesse erweitern
+## 🤝 Contributing
+
+Beiträge sind willkommen!
+
+1. Fork das Repository
+2. Branch erstellen (`git checkout -b feature/NeuesFeature`)
+3. Commit (`git commit -m 'Add: Neues Feature'`)
+4. Push (`git push origin feature/NeuesFeature`)
+5. Pull Request öffnen
+
+---
+
+## 📄 License
+
+MIT License – siehe [LICENSE](LICENSE) Datei
+
+---
+
+## 💡 Entstehung und Arbeitsweise
+
+BenchFlow ist ein Eigenprojekt im Rahmen meiner Weiterbildung zum Fullstack Webentwickler.
+
+Das Projekt wurde eigenständig konzipiert, strukturiert und entwickelt.
+Bei der Umsetzung habe ich gezielt KI-gestützte Werkzeuge (u.a. als Pair-Programmer,
+für Code-Reviews und zur Klärung technischer Fragen) eingesetzt – ähnlich wie
+Entwickler heute Linter, Dokumentation oder Stack Overflow nutzen.
+
+Alle Architekturentscheidungen, der Workflow-Entwurf und das Debugging
+lagen durchgehend bei mir.
+
+---
+
+## 📬 Kontakt
+
+**Matthias Osypka**
+
+[![Email](https://img.shields.io/badge/Email-Matthias.Osypka%40icloud.com-blue?style=flat-square&logo=mail.ru)](mailto:Matthias.Osypka@icloud.com)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=flat-square&logo=github)](https://github.com/Matzorator)
+
+💡 **Suche nach:** Entwickler Position im Bereich Fullstack Web Entwicklung
+
+---
+
+## 📊 Projekt-Statistik
+
+```
+Stack:              Python · Flask · SQLite · Swift · JavaScript
+Test-Flows:         30+
+API-Endpunkte:      12+
+Dokumenttypen:      6
+Unterstützte OS:    macOS (Web) · iOS 17+ (Native)
+```
+
+---
+
+<div align="center">
+
+**Entwickelt mit ❤️ und 🍵**
+
+[⬆ Nach oben](#-benchflow---werkstatt--service-mvp)
+
+</div>
