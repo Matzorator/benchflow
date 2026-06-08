@@ -51,6 +51,8 @@
                 {% endfor %}
             </select>
         </label>
+        <input type="hidden" name="sort_by" value="{{ filters['sort_by'] }}">
+        <input type="hidden" name="sort_dir" value="{{ filters['sort_dir'] }}">
         <div class="filter-actions">
             <button type="submit" class="primary-button">Filter anwenden</button>
             <a href="{{ url_for('benchflow.orders') }}" class="ghost-button">Zurücksetzen</a>

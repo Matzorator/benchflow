@@ -7,12 +7,12 @@
     </article>
     {% else %}
     <div class="orders-list-head">
-        <span>Status</span>
-        <span>Auftrag</span>
-        <span>Kunde</span>
-        <span>Gerät</span>
-        <span>Technik</span>
-        <span>Annahme</span>
+        <a href="{{ sort_headers['status']['href'] }}" class="sort-link{% if sort_headers['status']['is_active'] %} is-active{% endif %}">Status{% if sort_headers['status']['is_active'] %}<small>{{ "ASC" if sort_headers['status']['direction'] == 'asc' else "DSC" }}</small>{% endif %}</a>
+        <a href="{{ sort_headers['order_number']['href'] }}" class="sort-link{% if sort_headers['order_number']['is_active'] %} is-active{% endif %}">Auftrag{% if sort_headers['order_number']['is_active'] %}<small>{{ "ASC" if sort_headers['order_number']['direction'] == 'asc' else "DSC" }}</small>{% endif %}</a>
+        <a href="{{ sort_headers['customer']['href'] }}" class="sort-link{% if sort_headers['customer']['is_active'] %} is-active{% endif %}">Kunde{% if sort_headers['customer']['is_active'] %}<small>{{ "ASC" if sort_headers['customer']['direction'] == 'asc' else "DSC" }}</small>{% endif %}</a>
+        <a href="{{ sort_headers['device']['href'] }}" class="sort-link{% if sort_headers['device']['is_active'] %} is-active{% endif %}">Gerät{% if sort_headers['device']['is_active'] %}<small>{{ "ASC" if sort_headers['device']['direction'] == 'asc' else "DSC" }}</small>{% endif %}</a>
+        <a href="{{ sort_headers['technician']['href'] }}" class="sort-link{% if sort_headers['technician']['is_active'] %} is-active{% endif %}">Technik{% if sort_headers['technician']['is_active'] %}<small>{{ "ASC" if sort_headers['technician']['direction'] == 'asc' else "DSC" }}</small>{% endif %}</a>
+        <a href="{{ sort_headers['intake_date']['href'] }}" class="sort-link{% if sort_headers['intake_date']['is_active'] %} is-active{% endif %}">Annahme{% if sort_headers['intake_date']['is_active'] %}<small>{{ "ASC" if sort_headers['intake_date']['direction'] == 'asc' else "DSC" }}</small>{% endif %}</a>
         <span>Aktionen</span>
     </div>
 

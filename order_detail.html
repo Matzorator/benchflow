@@ -437,12 +437,15 @@
         <a href="{{ url_for('benchflow.order_attachment', order_id=order['id'], media_id=quote['pdf_media_id']) }}" target="_blank" rel="noopener noreferrer" class="ghost-button compact-button">KVA-PDF ansehen</a>
         {% endif %}
         {% if quote and quote["approval_status"] == "freigegeben" %}
-        <form method="post" action="{{ url_for('benchflow.create_invoice_from_quote', order_id=order['id']) }}">
+        <form method="post" action="{{ url_for('benchflow.create_invoice_from_quote', order_id=order['id']) }}"{% if invoice %} onsubmit="return confirm('Es existiert bereits eine Rechnung. Soll sie mit den freigegebenen KVA-Daten ueberschrieben werden?')"{% endif %}>
             <button type="submit" class="primary-button compact-button">Rechnung aus KVA erzeugen</button>
         </form>
         {% endif %}
         </div>
     </div>
+    {% if quote and quote["approval_status"] == "freigegeben" and invoice %}
+    <p class="muted">Es existiert bereits eine Rechnung. Der direkte KVA-Import aktualisiert diese Rechnung mit den freigegebenen KVA-Daten.</p>
+    {% endif %}
     {% if quote_errors %}
     <div class="form-alert">
         {% for error in quote_errors %}

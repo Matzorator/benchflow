@@ -522,6 +522,51 @@ class BenchFlowFlowsTestCase(unittest.TestCase):
 
         self.assertIsNone(invoice)
 
+    def test_approved_quote_with_existing_invoice_shows_overwrite_warning(self):
+        create_response = self.create_order()
+        order_id = int(create_response.headers["Location"].rsplit("/", 1)[-1])
+
+        self.post(
+            f"/orders/{order_id}/quote",
+            data={
+                "quote_title": "Kostenvoranschlag Endkontrolle",
+                "quote_work_description": "Endkontrolle und Nachtest.",
+                "quote_parts_description": "Kleinteilesatz",
+                "quote_labor_cost": "45,00",
+                "quote_parts_cost": "12,00",
+                "quote_external_cost": "0,00",
+                "quote_shipping_cost": "0,00",
+                "quote_valid_until": "2026-04-18",
+                "quote_customer_message": "",
+                "quote_approval_status": "freigegeben",
+            },
+            follow_redirects=False,
+        )
+
+        self.post(
+            f"/orders/{order_id}/invoice",
+            data={
+                "invoice_title": "Bestehende Rechnung",
+                "invoice_labor_description": "Manuell erstellt.",
+                "invoice_parts_description": "",
+                "invoice_labor_cost": "30,00",
+                "invoice_parts_cost": "0,00",
+                "invoice_external_cost": "0,00",
+                "invoice_shipping_cost": "0,00",
+                "invoice_date": "2026-04-01",
+                "invoice_payment_status": "offen",
+                "invoice_internal_note": "",
+            },
+            follow_redirects=False,
+        )
+
+        detail_response = self.get(f"/orders/{order_id}")
+        detail_html = detail_response.get_data(as_text=True)
+
+        self.assertEqual(detail_response.status_code, 200)
+        self.assertIn("Es existiert bereits eine Rechnung.", detail_html)
+        self.assertIn("confirm('Es existiert bereits eine Rechnung.", detail_html)
+
     def test_paid_invoice_marks_order_completed(self):
         create_response = self.create_order()
         order_id = int(create_response.headers["Location"].rsplit("/", 1)[-1])

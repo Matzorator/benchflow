@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}Kunden - BenchFlow{% endblock %}
+
+{% block content %}
+<section class="page-intro">
+    <div>
+        <p class="eyebrow">Kunden</p>
+        <h1>Kundenliste</h1>
+        <p class="lead">Schneller Zugriff auf Bestandskunden, Kontaktinfos und laufende Werkstattvorgänge.</p>
+    </div>
+    <div class="hero-card compact-card">
+        <span>Sichtbar</span>
+        <strong>{{ customer_count }} Kunden</strong>
+        <p>{% if filters["scope"] == "all" %}Mit und ohne aktive Vorgänge{% else %}Nur Kunden mit aktiven Vorgängen{% endif %}</p>
+    </div>
+</section>
+
+<section class="filter-panel">
+    <form class="filter-form customer-filter-form" method="get" action="{{ url_for('benchflow.customers') }}">
+        <label class="search-field">
+            <span>Suche</span>
+            <input type="text" name="q" value="{{ filters['q'] }}" placeholder="Name, Firma, Telefon, E-Mail oder Ort">
+        </label>
+        <label>
+            <span>Umfang</span>
+            <select name="scope">
+                <option value="active" {% if filters["scope"] == "active" %}selected{% endif %}>Nur aktive Kunden</option>
+                <option value="all" {% if filters["scope"] == "all" %}selected{% endif %}>Alle Kunden</option>
+            </select>
+        </label>
+        <div class="filter-actions">
+            <button type="submit" class="primary-button">Filter anwenden</button>
+            <a href="{{ url_for('benchflow.customers') }}" class="ghost-button">Zurücksetzen</a>
+        </div>
+    </form>
+</section>
+
+<section class="customer-directory">
+    {% if not customers %}
+    <article class="empty-card">
+        <p class="eyebrow">Keine Treffer</p>
+        <h3>Aktuell passen keine Kunden auf diese Ansicht.</h3>
+        <p class="muted">Passe Suche oder Umfang an, um wieder Kunden einzublenden.</p>
+    </article>
+    {% else %}
+    <div class="customer-directory-head">
+        <span>Kunde</span>
+        <span>Kontakt</span>
+        <span>Ort</span>
+        <span>Vorgänge</span>
+        <span>Letzter Auftrag</span>
+        <span>Aktionen</span>
+    </div>
+
+    {% for customer in customers %}
+    <article class="customer-row">
+        <div class="customer-cell" data-label="Kunde">
+            <strong class="order-primary"><a href="{{ url_for('benchflow.customer_detail', customer_id=customer['id']) }}">{{ customer["name"] }}</a></strong>
+            <span class="order-secondary">{{ customer["company_name"] or "Privatkunde" }}</span>
+        </div>
+
+        <div class="customer-cell" data-label="Kontakt">
+            <strong class="order-primary">{{ customer["phone"] or "-" }}</strong>
+            <span class="order-secondary">{{ customer["email"] or customer["preferred_contact_label"] }}</span>
+        </div>
+
+        <div class="customer-cell" data-label="Ort">
+            <strong class="order-primary">{{ customer["location_label"] or "-" }}</strong>
+            <span class="order-secondary">{{ customer["street"] or "Keine Adresse hinterlegt" }}</span>
+        </div>
+
+        <div class="customer-cell" data-label="Vorgänge">
+            <strong class="order-primary">{{ customer["active_order_count"] }} offen</strong>
+            <span class="order-secondary">{{ customer["order_count"] }} insgesamt</span>
+        </div>
+
+        <div class="customer-cell" data-label="Letzter Auftrag">
+            <strong class="order-primary">{{ customer["latest_order_number"] or "-" }}</strong>
+            <span class="order-secondary">{{ customer["latest_order_status"] or "Noch kein Auftrag" }}</span>
+        </div>
+
+        <div class="customer-cell customer-actions" data-label="Aktionen">
+            <a href="{{ url_for('benchflow.customer_detail', customer_id=customer['id']) }}" class="card-link">Öffnen</a>
+            <a href="{{ url_for('benchflow.orders', q=customer['name']) }}" class="ghost-button compact-button">Aufträge</a>
+        </div>
+    </article>
+    {% endfor %}
+    {% endif %}
+</section>
+{% endblock %}

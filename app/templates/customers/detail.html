@@ -5,7 +5,7 @@
 {% block content %}
 <section class="page-intro">
     <div>
-        <a href="{{ url_for('benchflow.orders') }}" class="back-link">Zurück zu den Aufträgen</a>
+        <a href="{{ url_for('benchflow.customers') }}" class="back-link">Zurück zur Kundenliste</a>
         <p class="eyebrow">Kunde</p>
         <h1>{{ customer["name"] }}</h1>
         {% if customer["company_name"] %}

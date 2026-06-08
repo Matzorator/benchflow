@@ -105,6 +105,7 @@ Whenever possible:
 - [x] Ein-Seiten-Struktur in einen klaren Mehrseiten-Workflow aufgeteilt
 - [x] Dashboard als reine Uebersichtsseite mit Schnellzugriffen ausgebaut
 - [x] Aktive Auftragsliste als eigener Bereich fuer Suche, Filter und Oeffnen getrennt
+- [x] Sortierung in Auftrags- und Archivlisten direkt ueber die Tabellenkoepfe mit ASC/DSC ergaenzt
 - [x] Eigene Annahmeseite fuer neue Auftraege eingefuehrt
 - [x] Detailseite als zentralen Arbeitsbereich fuer bestehende Auftraege geschaerft
 - [x] Archiv als eigener Bereich vom aktiven Tagesgeschaeft getrennt
@@ -150,11 +151,15 @@ Whenever possible:
 - [x] Auftragssuche auch nach Firmenname und Ort erweitert
 - [x] Kundensuche in der Auftragserfassung integriert, damit bestehende Kunden uebernommen werden koennen
 - [x] Kundenpicker in der Auftragserfassung fuer den Lightmode nachgeschaerft
+- [x] Eigene Kundenliste mit Suche sowie Filter fuer aktive und alle Kunden umgesetzt
 - [x] Eigene Kundendetailansicht mit Stammdaten und bisherigen Auftraegen umgesetzt
+- [x] Demo-Datenbasis auf klar fiktive Namen, Firmen, Adressen, Maildomains und Techniklabels umgestellt
 - [x] Bestehende Kundendatensaetze in der SQLite-Datenbank mit realistischen Firmen-, Adress- und Kontaktdetails angereichert
 - [x] Kostenvoranschlag als eigener Workflow in der Detailseite mit separatem KVA-Block umgesetzt
 - [x] Kostenvoranschlag wird serverseitig als PDF erzeugt und direkt als Dokument am Auftrag abgelegt
 - [x] Vorbereiteter KVA-Mailversand aus der Detailseite mit vorausgefuelltem Empfaenger, Betreff und Mailtext ergaenzt
+- [x] Freigegebener KVA kann direkt in eine Rechnung uebernommen und als PDF erzeugt werden
+- [x] Beim direkten Rechnungsaufbau aus einem freigegebenen KVA wird vor dem Ueberschreiben einer bestehenden Rechnung sichtbar gewarnt und per Bestaetigung abgesichert
 - [x] KVA-Mailvorlage fuer Kundenansprache mit klarerem Betreff, Geraetebezug und saubererem Mailtext nachgeschaerft
 - [x] KVA-Mailvorlage zusaetzlich auf einen freundlicheren, lockereren Musikladen-Ton angepasst
 - [x] Kundennahe Sprache in KVA-PDF, Rechnung und Kundenbeleg leicht auf den freundlich-lockeren Werkstattton abgestimmt
@@ -173,22 +178,37 @@ Whenever possible:
 - [x] Kleine `unittest`-Suite fuer die Kernfluesse Auftrag anlegen, bearbeiten, Anhaenge, Archiv und Druckansichten angelegt
 - [x] Bestehende SQLite-Datenbank um 50 zusätzliche fiktive Testaufträge ergänzt
 - [x] Detailseite in klarere Werkstatt-Arbeitsblöcke fuer Ueberblick, Kundenkontakt, Annahme, Fehlerangabe, Werkstattbearbeitung, Medien und Verlauf gegliedert
-- [x] Auftragsdetailseite prozessnäher umsortiert, sodass KVA und Rechnung erst in einer klaren Abschlussphase unterhalb der Werkstattbearbeitung erscheinen
-- [x] Detailseite visuell in Abschlussphasen fuer Dokumente/Verlauf und Abrechnung getrennt und die alte Zwei-Spalten-Logik im Arbeitsbereich zugunsten eines ruhigeren Einspalten-Layouts entfernt
-- [x] Auftragskopf auf der Detailseite zu einem kompakteren Ueberblick mit fokussierten Kennzahlen und reduzierter Redundanz verdichtet
-- [x] Kundenkontakt und Geraeteannahme auf der Detailseite zu einem gemeinsamen Annahme-Block zusammengefuehrt
-- [x] Fehlerbild und Werkstattsteuerung auf der Detailseite zu einem gemeinsamen Arbeitsblock zusammengezogen und auf Desktop zweispaltig organisiert
-- [x] Herstellerfeld in Auftragserfassung und Detailseite auf eine feste Markenauswahl umgestellt, um Tippfehler in Geraetemarken zu vermeiden
-- [x] PDF-Dokumente auf der Detailseite um direkt pflegbaren Dateinamen und kurze interne Dokumentnotiz erweitert
-- [x] Sichtbare deutsche UI-Texte in Navigation, Listen, Detailseite, Druckansichten und Meldungen auf echte Umlaute umgestellt
-- [x] Deployment um `wsgi.py` und ein robustes Restart-Skript erweitert, damit Server-Updates den laufenden BenchFlow-Prozess reproduzierbar neu laden
-- [x] Server-Umgebung und `benchflow.service` auf den korrekten `.venv`-Pfad repariert, damit Gunicorn wieder stabil ueber systemd startet
+- [x] Wiederverwendete Karten-, Listen- und Formularflaechen im Lightmode zentral nachgeschaerft, damit neue Bereiche nicht mehr dunkel stehen bleiben
+- [x] JSON-API parallel zu den HTML-Routen fuer Dashboard, Auftragslisten, Detailansicht, Kundenliste, KVA-, Rechnungs- und Attachment-Workflow aufgebaut
+- [x] SwiftUI-App-Struktur fuer iOS 17+ / macOS 14+ mit `APIClient`, `Codable`-Models, `@Observable`-ViewModels und ATS-Ausnahme fuer die lokale HTTP-IP angelegt
+- [x] XcodeGen-Scaffold fuer den nativen SwiftUI-Client inklusive `Info.plist`, Asset-Katalog und iOS-17-App-Target vorbereitet
+- [x] Xcode-Projekt so nachgeschaerft, dass Ressourcen ueber die normale iOS-`resources`-Phase gebaut und Simulator-Builds als korrekt signiertes `.app` installiert werden koennen
+- [x] Native Optik naeher an die BenchFlow-Weboberflaeche gezogen: dunkle Werkstatt-Panels, cyanfarbene Akzente, kompaktere Tab-Navigation und dichtere Inhaltsdarstellung auf iPhone
+- [x] Native Screen-Chrome weiter gestrafft: weniger Top-Abstand im Dashboard, Tab-Bar optisch naeher am unteren Rand und reduzierter Blur-/Fade-Bereich an Navigation und Tab-Leiste
+- [x] Archiv-Screen nativer aufgeteilt: eigener Kopfbereich im oberen Safe Area, klar gegliederte Filter-/Listen-Panels statt Standard-`List` und eigene kompakte Tab-Leiste dichter am unteren Bildschirmrand
+- [x] Das neue Archiv-Layout als gemeinsames Seitenmuster ausgerollt: Dashboard, Auftragsliste, Kundenliste sowie Detail- und Formularseiten nutzen jetzt dieselbe BenchFlow-Kopfzeile und die flachere Screen-Chrome
+- [x] Die flaechige Native-Struktur grundsaetzlich nachgeschaerft: versteckte System-`TabView` als Layouttreiber entfernt, zentrale Screens von `Form`/`List` auf `ScrollView`/`LazyVStack` umgestellt und damit deutlich mehr nutzbare Bildschirmhoehe fuer Inhalt freigemacht
+- [x] Schwarze Randflaechen in der nativen App als Fullscreen-/Containerproblem behoben: Root-Container und Screen-Hintergruende auf echte Vollflaeche gezogen statt nur inhaltsgross zu rendern, und die Seiten-Chrome auf Inhalts-Insets statt aeussere Gesamt-Paddings umgestellt
+- [x] Nativen iOS-Client um einen echten Launch Screen ergaenzt, damit aktuelle iPhones und Simulatoren die App nicht mehr im verkleinerten Kompatibilitaetsmodus mit schwarzen Randflaechen starten
+- [x] Native Auftragsliste als kompakteren Quick-Filter umgebaut: ein gemeinsamer Filter fuer Status, Kategorie oder Dokumenttyp statt drei paralleler Dropdowns
+- [x] `Todo_Mobile.md` als eigene Mobile-Roadmap angelegt, damit die nativen iPhone-Verbesserungen getrennt vom Flask-Hauptprojekt planbar bleiben
+- [x] Native Detailseite als ruhigeren mobilen Arbeitsbereich nachgeschaerft: kompaktere Uebersicht, fruehere Schnellaktionen und konsistent gestylte Eingabebloecke
+- [x] Native Kundenliste auf dieselbe reduzierte Filterlogik wie die Auftragsliste umgestellt
+- [x] Bestehende Kundenauswahl in der nativen Auftragserfassung auf Suchfeld plus Trefferliste umgebaut statt permanent unruhiger Kandidatenliste
+- [x] KVA-, Rechnungs- und Attachment-Fluss in der nativen Detailseite mobiler organisiert: Status/Summen zuerst, Aktionen und Dokumentzugriffe direkter im Blick
+- [x] Freigegebenen KVA in der nativen Detailseite per Button direkt in eine Rechnung uebernehmbar gemacht
+- [x] KVA- und Rechnungskosten im nativen Detailscreen auf Euro-Eingabe umgestellt; API und Backend speichern intern weiter in Cent, damit Historie und Summen sauber bleiben
+- [x] Herstellerliste aus der Web-App in die JSON-API uebernommen und in der nativen Neuauftrag-/Detailansicht wieder als Dropdown angebunden
+- [x] Native App gegen aeltere Live-API abgesichert: Hersteller-Dropdown nutzt lokal dieselbe Fallback-Liste wie die Web-App, falls `/api/meta` das neue Feld noch nicht liefert
+- [x] Haengenden Kreis im nativen `Druck / Tools`-Block behoben: QR wird serverseitig als SVG geliefert und deshalb in der App nicht mehr per `AsyncImage`, sondern direkt ueber den Browser-Sheet geoeffnet
+- [x] Browser-Sheet der nativen App auf eigenen `WKWebView` umgestellt und Theme-Bruecke eingebaut, damit Kundenbeleg und interner Beleg auch im Lightmode hell bleiben
 
 ### Aktuell in Arbeit
 - [ ] Derzeit kein struktureller Umbau in Arbeit
 
 ### Als naechstes sinnvoll
 - [ ] Zahlungs- oder Versandvermerk fuer Rechnungen optional ergaenzen
-- [ ] Kundenliste als eigener Bereich mit schneller Suche und direktem Zugriff auf laufende Vorgänge ergaenzen
-- [ ] Dokumentenverwaltung bei Bedarf ueber die neuen Dateinamen/Kurznotizen hinaus um weitere Kategorien oder Freigabe-Metadaten erweitern
+- [ ] Kundenliste bei Bedarf um feinere Firmen-/Ortsfilter oder Schnellaktionen erweitern
+- [ ] Dokumentenverwaltung bei Bedarf um weitere Kategorien oder kleine Metadaten wie Bemerkungen/Umbenennen erweitern
 - [ ] Such- und Filteransicht spaeter optional um Migrationsmarker erweitern, falls der Altimport wieder relevant wird
+- [ ] SwiftUI-App im laufenden Simulator noch fachlich gegen den Live-Server durchtesten (Navigation, Listen, Detail, KVA/Rechnung, PDF-/Print-Links)

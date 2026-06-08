@@ -21,7 +21,47 @@ from .db import (
 
 bp = Blueprint("benchflow", __name__)
 
-TECHNICIANS = ["Jonas", "Aylin", "Mira", "Werkstatt extern"]
+TECHNICIANS = ["Bank 1", "Bank 2", "Bank 3", "Extern"]
+ORDER_SORT_OPTIONS = {
+    "status": {
+        "label": "Status",
+        "order_by": """
+            CASE so.status
+                WHEN 'Angenommen' THEN 1
+                WHEN 'Diagnose' THEN 2
+                WHEN 'Wartet auf Freigabe' THEN 3
+                WHEN 'Freigegeben' THEN 4
+                WHEN 'Abgelehnt' THEN 5
+                WHEN 'Warten auf Teile' THEN 6
+                WHEN 'In Reparatur' THEN 7
+                WHEN 'Fertig' THEN 8
+                WHEN 'Abholbereit' THEN 9
+                WHEN 'Abgeschlossen' THEN 10
+                ELSE 11
+            END
+        """,
+    },
+    "order_number": {
+        "label": "Auftrag",
+        "order_by": "so.order_number",
+    },
+    "customer": {
+        "label": "Kunde",
+        "order_by": "LOWER(c.name), LOWER(c.company_name)",
+    },
+    "device": {
+        "label": "Gerät",
+        "order_by": "LOWER(d.manufacturer), LOWER(d.model), LOWER(d.serial_number)",
+    },
+    "technician": {
+        "label": "Technik",
+        "order_by": "LOWER(so.technician)",
+    },
+    "intake_date": {
+        "label": "Annahme",
+        "order_by": "so.intake_date",
+    },
+}
 ORDER_STATUSES = [
     "Angenommen",
     "Diagnose",
@@ -242,6 +282,8 @@ def orders():
         "status": request.args.get("status", "").strip(),
         "category": request.args.get("category", "").strip(),
         "document_type": request.args.get("document_type", "").strip(),
+        "sort_by": request.args.get("sort_by", "status").strip(),
+        "sort_dir": request.args.get("sort_dir", "asc").strip(),
     }
     return render_order_list(filters=filters, archived=False)
 
@@ -253,6 +295,8 @@ def archive():
         "status": request.args.get("status", "").strip(),
         "category": request.args.get("category", "").strip(),
         "document_type": request.args.get("document_type", "").strip(),
+        "sort_by": request.args.get("sort_by", "status").strip(),
+        "sort_dir": request.args.get("sort_dir", "asc").strip(),
     }
     return render_order_list(filters=filters, archived=True)
 
@@ -358,6 +402,21 @@ def order_detail(order_id):
     return render_order_detail_page(order)
 
 
+@bp.route("/customers")
+def customers():
+    filters = {
+        "q": request.args.get("q", "").strip(),
+        "scope": request.args.get("scope", "active").strip() or "active",
+    }
+    customers_list = fetch_customers(filters=filters)
+    return render_template(
+        "customers/list.html",
+        customers=customers_list,
+        customer_count=len(customers_list),
+        filters=filters,
+    )
+
+
 @bp.route("/customers/<int:customer_id>")
 def customer_detail(customer_id):
     customer = fetch_customer(customer_id)
@@ -370,6 +429,16 @@ def customer_detail(customer_id):
         customer=customer,
         orders=customer_orders,
         order_count=len(customer_orders),
+        sort_headers=build_order_sort_headers(
+            {
+                "q": "",
+                "status": "",
+                "category": "",
+                "document_type": "",
+                "sort_by": "status",
+                "sort_dir": "asc",
+            }
+        ),
     )
 
 
@@ -596,133 +665,23 @@ def save_order_invoice(order_id):
             invoice=merge_invoice_for_render(existing_invoice, invoice_form_data),
         ), 400
 
-    db = get_db()
-    invoice_number = existing_invoice["invoice_number"] if existing_invoice else build_invoice_number(order)
-    total_cost_cents = compute_invoice_total_cents(invoice_form_data)
-    pdf_filename = f"{order['order_number'].lower()}-rechnung.pdf"
-    pdf_context = invoice_form_data["title"] or "Rechnung"
-    pdf_bytes = build_invoice_pdf(order, invoice_form_data, invoice_number, total_cost_cents)
-    pdf_media_data = encode_pdf_bytes(pdf_bytes)
-
-    if existing_invoice:
-        db.execute(
-            """
-            UPDATE service_order_invoices
-            SET title = ?,
-                labor_description = ?,
-                parts_description = ?,
-                labor_cost_cents = ?,
-                parts_cost_cents = ?,
-                external_cost_cents = ?,
-                shipping_cost_cents = ?,
-                total_cost_cents = ?,
-                invoice_date = ?,
-                payment_status = ?,
-                internal_note = ?,
-                updated_at = CURRENT_TIMESTAMP
-            WHERE service_order_id = ?
-            """,
-            (
-                invoice_form_data["title"],
-                invoice_form_data["labor_description"],
-                invoice_form_data["parts_description"],
-                invoice_form_data["labor_cost_cents"],
-                invoice_form_data["parts_cost_cents"],
-                invoice_form_data["external_cost_cents"],
-                invoice_form_data["shipping_cost_cents"],
-                total_cost_cents,
-                invoice_form_data["invoice_date"],
-                invoice_form_data["payment_status"],
-                invoice_form_data["internal_note"],
-                order_id,
-            ),
-        )
-        invoice_id = existing_invoice["id"]
-        pdf_media_id = existing_invoice.get("pdf_media_id")
-    else:
-        cursor = db.execute(
-            """
-            INSERT INTO service_order_invoices (
-                service_order_id,
-                invoice_number,
-                title,
-                labor_description,
-                parts_description,
-                labor_cost_cents,
-                parts_cost_cents,
-                external_cost_cents,
-                shipping_cost_cents,
-                total_cost_cents,
-                invoice_date,
-                payment_status,
-                internal_note
-            )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            """,
-            (
-                order_id,
-                invoice_number,
-                invoice_form_data["title"],
-                invoice_form_data["labor_description"],
-                invoice_form_data["parts_description"],
-                invoice_form_data["labor_cost_cents"],
-                invoice_form_data["parts_cost_cents"],
-                invoice_form_data["external_cost_cents"],
-                invoice_form_data["shipping_cost_cents"],
-                total_cost_cents,
-                invoice_form_data["invoice_date"],
-                invoice_form_data["payment_status"],
-                invoice_form_data["internal_note"],
-            ),
-        )
-        invoice_id = cursor.lastrowid
-        pdf_media_id = None
-
-    if pdf_media_id:
-        db.execute(
-            """
-            UPDATE service_order_media
-            SET filename = ?,
-                mime_type = 'application/pdf',
-                document_type = 'rechnung',
-                order_context = ?,
-                media_data = ?,
-                created_at = CURRENT_TIMESTAMP
-            WHERE id = ?
-              AND service_order_id = ?
-            """,
-            (pdf_filename, pdf_context[:220], pdf_media_data, pdf_media_id, order_id),
-        )
-    else:
-        media_cursor = db.execute(
-            """
-            INSERT INTO service_order_media (service_order_id, filename, mime_type, document_type, order_context, media_data)
-            VALUES (?, ?, 'application/pdf', 'rechnung', ?, ?)
-            """,
-            (order_id, pdf_filename, pdf_context[:220], pdf_media_data),
-        )
-        pdf_media_id = media_cursor.lastrowid
-        db.execute(
-            "UPDATE service_order_invoices SET pdf_media_id = ? WHERE id = ?",
-            (pdf_media_id, invoice_id),
-        )
-
-    invoice_status = "Abgeschlossen" if invoice_form_data["payment_status"] == "bezahlt" else "Abholbereit"
-    history_note = build_invoice_history_note(existing_invoice, invoice_form_data["payment_status"], total_cost_cents)
-    db.execute(
-        """
-        UPDATE service_orders
-        SET status = ?,
-            updated_at = CURRENT_TIMESTAMP
-        WHERE id = ?
-        """,
-        (invoice_status, order_id),
-    )
-    if order["status"] != invoice_status or not existing_invoice:
-        add_status_history_entry(db, order_id, invoice_status, note=history_note)
-
-    db.commit()
+    persist_invoice(order, invoice_form_data, existing_invoice=existing_invoice)
     flash("Rechnung gespeichert und als PDF am Auftrag abgelegt.", "success")
+    return redirect(url_for("benchflow.order_detail", order_id=order_id, _anchor="invoice-workflow"))
+
+
+@bp.route("/orders/<int:order_id>/invoice/from-quote", methods=["POST"])
+def create_invoice_from_quote(order_id):
+    order = fetch_order(order_id)
+    quote = fetch_order_quote(order_id, required=True)
+    if quote["approval_status"] != "freigegeben":
+        flash("Eine Rechnung kann erst aus einem freigegebenen KVA erzeugt werden.", "error")
+        return redirect(url_for("benchflow.order_detail", order_id=order_id, _anchor="kva-workflow"))
+
+    existing_invoice = fetch_order_invoice(order_id, required=False)
+    invoice_form_data = build_invoice_form_data_from_quote(order, quote, existing_invoice=existing_invoice)
+    persist_invoice(order, invoice_form_data, existing_invoice=existing_invoice)
+    flash("Rechnung direkt aus dem freigegebenen KVA erzeugt.", "success")
     return redirect(url_for("benchflow.order_detail", order_id=order_id, _anchor="invoice-workflow"))
 
 
@@ -1058,7 +1017,16 @@ def render_order_detail_page(order, errors=None, field_errors=None, order_media=
 
 def render_order_list(filters=None, archived=False):
     db = get_db()
-    filters = filters or {"q": "", "status": "", "category": "", "document_type": ""}
+    filters = filters or {
+        "q": "",
+        "status": "",
+        "category": "",
+        "document_type": "",
+        "sort_by": "status",
+        "sort_dir": "asc",
+    }
+    filters["sort_by"] = normalize_order_sort_by(filters.get("sort_by", "status"))
+    filters["sort_dir"] = normalize_sort_direction(filters.get("sort_dir", "asc"))
     conditions = []
     params = []
     conditions.append("so.archived_at IS NOT NULL" if archived else "so.archived_at IS NULL")
@@ -1105,7 +1073,12 @@ def render_order_list(filters=None, archived=False):
     if conditions:
         where_clause = "WHERE " + " AND ".join(conditions)
 
-    orders = fetch_orders(where_clause=where_clause, params=params)
+    orders = fetch_orders(
+        where_clause=where_clause,
+        params=params,
+        sort_by=filters["sort_by"],
+        sort_dir=filters["sort_dir"],
+    )
 
     archived_count = db.execute(
         """
@@ -1124,14 +1097,19 @@ def render_order_list(filters=None, archived=False):
         document_types=DOCUMENT_TYPES,
         filters=filters,
         archived_count=archived_count,
+        sort_headers=build_order_sort_headers(filters, archived=archived),
     )
 
 
-def fetch_orders(where_clause="", params=None, include_archived=False):
+def fetch_orders(where_clause="", params=None, include_archived=False, sort_by="status", sort_dir="asc"):
     db = get_db()
     params = params or []
     if include_archived and not where_clause:
         where_clause = ""
+    sort_by = normalize_order_sort_by(sort_by)
+    sort_dir = normalize_sort_direction(sort_dir)
+    sort_order = ORDER_SORT_OPTIONS[sort_by]["order_by"]
+    sort_direction_sql = "DESC" if sort_dir == "desc" else "ASC"
 
     rows = db.execute(
         f"""
@@ -1191,21 +1169,8 @@ def fetch_orders(where_clause="", params=None, include_archived=False):
         JOIN devices d ON d.id = so.device_id
         {where_clause}
         ORDER BY
-            CASE so.status
-                WHEN 'Angenommen' THEN 1
-                WHEN 'Diagnose' THEN 2
-                WHEN 'Wartet auf Freigabe' THEN 3
-                WHEN 'Freigegeben' THEN 4
-                WHEN 'Abgelehnt' THEN 5
-                WHEN 'Warten auf Teile' THEN 6
-                WHEN 'In Reparatur' THEN 7
-                WHEN 'Fertig' THEN 8
-                WHEN 'Abholbereit' THEN 9
-                WHEN 'Abgeschlossen' THEN 10
-                ELSE 11
-            END,
-            so.intake_date ASC,
-            so.id ASC
+            {sort_order} {sort_direction_sql},
+            so.id {"DESC" if sort_dir == "desc" else "ASC"}
         """,
         params,
     ).fetchall()
@@ -1213,6 +1178,37 @@ def fetch_orders(where_clause="", params=None, include_archived=False):
     for order in orders:
         order["document_hint"] = build_order_document_hint(order)
     return orders
+
+
+def normalize_order_sort_by(value):
+    return value if value in ORDER_SORT_OPTIONS else "status"
+
+
+def normalize_sort_direction(value):
+    return "desc" if value == "desc" else "asc"
+
+
+def build_order_sort_headers(filters, archived=False):
+    endpoint = "benchflow.archive" if archived else "benchflow.orders"
+    headers = {}
+    for key, option in ORDER_SORT_OPTIONS.items():
+        is_active = filters["sort_by"] == key
+        next_dir = "desc" if is_active and filters["sort_dir"] == "asc" else "asc"
+        header_params = {
+            "q": filters["q"],
+            "status": filters["status"],
+            "category": filters["category"],
+            "document_type": filters["document_type"],
+            "sort_by": key,
+            "sort_dir": next_dir,
+        }
+        headers[key] = {
+            "label": option["label"],
+            "href": url_for(endpoint, **header_params),
+            "is_active": is_active,
+            "direction": filters["sort_dir"] if is_active else "",
+        }
+    return headers
 
 
 def fetch_customer_directory():
@@ -1246,6 +1242,113 @@ def fetch_customer_directory():
         customer["search_label"] = " | ".join(label_parts)
         directory.append(customer)
     return directory
+
+
+def fetch_customers(filters=None):
+    filters = filters or {"q": "", "scope": "active"}
+    scope = filters.get("scope", "active")
+    if scope not in {"active", "all"}:
+        scope = "active"
+
+    conditions = []
+    params = []
+
+    if filters.get("q"):
+        search = f"%{filters['q'].lower()}%"
+        conditions.append(
+            """
+            (
+                LOWER(c.name) LIKE ?
+                OR LOWER(c.company_name) LIKE ?
+                OR LOWER(c.email) LIKE ?
+                OR LOWER(c.phone) LIKE ?
+                OR LOWER(c.city) LIKE ?
+            )
+            """
+        )
+        params.extend([search, search, search, search, search])
+
+    if scope == "active":
+        conditions.append(
+            """
+            EXISTS (
+                SELECT 1
+                FROM service_orders so_active
+                WHERE so_active.customer_id = c.id
+                  AND so_active.archived_at IS NULL
+            )
+            """
+        )
+
+    where_clause = ""
+    if conditions:
+        where_clause = "WHERE " + " AND ".join(conditions)
+
+    rows = get_db().execute(
+        f"""
+        SELECT
+            c.id,
+            c.name,
+            c.company_name,
+            c.email,
+            c.phone,
+            c.street,
+            c.postal_code,
+            c.city,
+            c.preferred_contact,
+            c.customer_notes,
+            (
+                SELECT COUNT(*)
+                FROM service_orders so_total
+                WHERE so_total.customer_id = c.id
+            ) AS order_count,
+            (
+                SELECT COUNT(*)
+                FROM service_orders so_active
+                WHERE so_active.customer_id = c.id
+                  AND so_active.archived_at IS NULL
+            ) AS active_order_count,
+            (
+                SELECT so_latest.order_number
+                FROM service_orders so_latest
+                WHERE so_latest.customer_id = c.id
+                ORDER BY datetime(so_latest.updated_at) DESC, so_latest.id DESC
+                LIMIT 1
+            ) AS latest_order_number,
+            (
+                SELECT so_latest.status
+                FROM service_orders so_latest
+                WHERE so_latest.customer_id = c.id
+                ORDER BY datetime(so_latest.updated_at) DESC, so_latest.id DESC
+                LIMIT 1
+            ) AS latest_order_status,
+            (
+                SELECT so_latest.updated_at
+                FROM service_orders so_latest
+                WHERE so_latest.customer_id = c.id
+                ORDER BY datetime(so_latest.updated_at) DESC, so_latest.id DESC
+                LIMIT 1
+            ) AS latest_order_updated_at
+        FROM customers c
+        {where_clause}
+        ORDER BY
+            active_order_count DESC,
+            LOWER(c.name) ASC,
+            LOWER(c.company_name) ASC,
+            c.id ASC
+        """,
+        params,
+    ).fetchall()
+
+    customers_list = []
+    for row in rows:
+        customer = dict(row)
+        customer["preferred_contact_label"] = build_preferred_contact_label(customer.get("preferred_contact", ""))
+        customer["location_label"] = " ".join(
+            part for part in [customer.get("postal_code", "").strip(), customer.get("city", "").strip()] if part
+        )
+        customers_list.append(customer)
+    return customers_list
 
 
 def next_order_number(db):
@@ -1617,6 +1720,31 @@ def build_invoice_form_data(order, invoice=None):
         "external_cost_cents": 0,
         "shipping_cost_cents": 0,
     }
+
+
+def build_invoice_form_data_from_quote(order, quote, existing_invoice=None):
+    base_form = build_invoice_form_data(order, invoice=existing_invoice)
+    quote_title = quote["title"] or f"Kostenvoranschlag {order['order_number']}"
+    invoice_title = quote_title.replace("Kostenvoranschlag", "Rechnung", 1) if "Kostenvoranschlag" in quote_title else f"Rechnung {order['order_number']}"
+    base_form.update(
+        {
+            "title": invoice_title,
+            "labor_description": quote["work_description"],
+            "parts_description": quote["parts_description"],
+            "labor_cost": cents_to_input(quote["labor_cost_cents"]),
+            "parts_cost": cents_to_input(quote["parts_cost_cents"]),
+            "external_cost": cents_to_input(quote["external_cost_cents"]),
+            "shipping_cost": cents_to_input(quote["shipping_cost_cents"]),
+            "invoice_date": date.today().isoformat(),
+            "payment_status": existing_invoice["payment_status"] if existing_invoice else "offen",
+            "internal_note": existing_invoice["internal_note"] if existing_invoice else f"Aus freigegebenem {quote['quote_number']} übernommen.",
+            "labor_cost_cents": quote["labor_cost_cents"],
+            "parts_cost_cents": quote["parts_cost_cents"],
+            "external_cost_cents": quote["external_cost_cents"],
+            "shipping_cost_cents": quote["shipping_cost_cents"],
+        }
+    )
+    return base_form
 
 
 def extract_quote_form(existing_quote=None, order=None):
@@ -2119,6 +2247,136 @@ def build_invoice_history_note(existing_invoice, payment_status, total_cost_cent
     if payment_status == "bezahlt":
         return f"Rechnung als bezahlt markiert ({total_label})."
     return f"Rechnung aktualisiert ({total_label})."
+
+
+def persist_invoice(order, invoice_form_data, existing_invoice=None):
+    db = get_db()
+    order_id = order["id"]
+    invoice_number = existing_invoice["invoice_number"] if existing_invoice else build_invoice_number(order)
+    total_cost_cents = compute_invoice_total_cents(invoice_form_data)
+    pdf_filename = f"{order['order_number'].lower()}-rechnung.pdf"
+    pdf_context = invoice_form_data["title"] or "Rechnung"
+    pdf_bytes = build_invoice_pdf(order, invoice_form_data, invoice_number, total_cost_cents)
+    pdf_media_data = encode_pdf_bytes(pdf_bytes)
+
+    if existing_invoice:
+        db.execute(
+            """
+            UPDATE service_order_invoices
+            SET title = ?,
+                labor_description = ?,
+                parts_description = ?,
+                labor_cost_cents = ?,
+                parts_cost_cents = ?,
+                external_cost_cents = ?,
+                shipping_cost_cents = ?,
+                total_cost_cents = ?,
+                invoice_date = ?,
+                payment_status = ?,
+                internal_note = ?,
+                updated_at = CURRENT_TIMESTAMP
+            WHERE service_order_id = ?
+            """,
+            (
+                invoice_form_data["title"],
+                invoice_form_data["labor_description"],
+                invoice_form_data["parts_description"],
+                invoice_form_data["labor_cost_cents"],
+                invoice_form_data["parts_cost_cents"],
+                invoice_form_data["external_cost_cents"],
+                invoice_form_data["shipping_cost_cents"],
+                total_cost_cents,
+                invoice_form_data["invoice_date"],
+                invoice_form_data["payment_status"],
+                invoice_form_data["internal_note"],
+                order_id,
+            ),
+        )
+        invoice_id = existing_invoice["id"]
+        pdf_media_id = existing_invoice.get("pdf_media_id")
+    else:
+        cursor = db.execute(
+            """
+            INSERT INTO service_order_invoices (
+                service_order_id,
+                invoice_number,
+                title,
+                labor_description,
+                parts_description,
+                labor_cost_cents,
+                parts_cost_cents,
+                external_cost_cents,
+                shipping_cost_cents,
+                total_cost_cents,
+                invoice_date,
+                payment_status,
+                internal_note
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                order_id,
+                invoice_number,
+                invoice_form_data["title"],
+                invoice_form_data["labor_description"],
+                invoice_form_data["parts_description"],
+                invoice_form_data["labor_cost_cents"],
+                invoice_form_data["parts_cost_cents"],
+                invoice_form_data["external_cost_cents"],
+                invoice_form_data["shipping_cost_cents"],
+                total_cost_cents,
+                invoice_form_data["invoice_date"],
+                invoice_form_data["payment_status"],
+                invoice_form_data["internal_note"],
+            ),
+        )
+        invoice_id = cursor.lastrowid
+        pdf_media_id = None
+
+    if pdf_media_id:
+        db.execute(
+            """
+            UPDATE service_order_media
+            SET filename = ?,
+                mime_type = 'application/pdf',
+                document_type = 'rechnung',
+                order_context = ?,
+                media_data = ?,
+                created_at = CURRENT_TIMESTAMP
+            WHERE id = ?
+              AND service_order_id = ?
+            """,
+            (pdf_filename, pdf_context[:220], pdf_media_data, pdf_media_id, order_id),
+        )
+    else:
+        media_cursor = db.execute(
+            """
+            INSERT INTO service_order_media (service_order_id, filename, mime_type, document_type, order_context, media_data)
+            VALUES (?, ?, 'application/pdf', 'rechnung', ?, ?)
+            """,
+            (order_id, pdf_filename, pdf_context[:220], pdf_media_data),
+        )
+        pdf_media_id = media_cursor.lastrowid
+        db.execute(
+            "UPDATE service_order_invoices SET pdf_media_id = ? WHERE id = ?",
+            (pdf_media_id, invoice_id),
+        )
+
+    invoice_status = "Abgeschlossen" if invoice_form_data["payment_status"] == "bezahlt" else "Abholbereit"
+    history_note = build_invoice_history_note(existing_invoice, invoice_form_data["payment_status"], total_cost_cents)
+    db.execute(
+        """
+        UPDATE service_orders
+        SET status = ?,
+            updated_at = CURRENT_TIMESTAMP
+        WHERE id = ?
+        """,
+        (invoice_status, order_id),
+    )
+    if order["status"] != invoice_status or not existing_invoice:
+        add_status_history_entry(db, order_id, invoice_status, note=history_note)
+
+    db.commit()
 
 
 def encode_pdf_bytes(pdf_bytes):

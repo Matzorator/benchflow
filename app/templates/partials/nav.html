@@ -7,6 +7,7 @@
             <a href="{{ url_for('benchflow.dashboard_page') }}" class="{% if request.endpoint == 'benchflow.dashboard_page' %}is-active{% endif %}">Dashboard</a>
             <a href="{{ url_for('benchflow.orders') }}" class="{% if request.endpoint in ['benchflow.orders', 'benchflow.order_detail', 'benchflow.order_print', 'benchflow.order_print_internal', 'benchflow.update_order'] %}is-active{% endif %}">Aufträge</a>
             <a href="{{ url_for('benchflow.new_order') }}" class="{% if request.endpoint in ['benchflow.new_order', 'benchflow.create_order'] %}is-active{% endif %}">Neuer Auftrag</a>
+            <a href="{{ url_for('benchflow.customers') }}" class="{% if request.endpoint in ['benchflow.customers', 'benchflow.customer_detail'] %}is-active{% endif %}">Kunden</a>
             <a href="{{ url_for('benchflow.archive') }}" class="{% if request.endpoint == 'benchflow.archive' %}is-active{% endif %}">Archiv</a>
         </nav>
         <button type="button" class="theme-toggle ghost-button compact-button" data-theme-toggle aria-pressed="false">Light Mode</button>
