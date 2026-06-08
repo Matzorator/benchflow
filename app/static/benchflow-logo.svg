@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 170" role="img" aria-labelledby="title desc">
+  <title id="title">BenchFlow Logo</title>
+  <desc id="desc">BenchFlow Wortmarke mit reduziertem Werkzeug- und Elektronik-Symbol</desc>
+  <defs>
+    <linearGradient id="metal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5f8fc"/>
+      <stop offset="45%" stop-color="#c7d1dc"/>
+      <stop offset="100%" stop-color="#748395"/>
+    </linearGradient>
+    <linearGradient id="metalStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a9b4c1"/>
+      <stop offset="100%" stop-color="#405263"/>
+    </linearGradient>
+    <linearGradient id="flowBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#53d1ff"/>
+      <stop offset="55%" stop-color="#1397ff"/>
+      <stop offset="100%" stop-color="#0055d8"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(14 18)">
+    <circle cx="52" cy="52" r="46" fill="none" stroke="url(#metalStroke)" stroke-width="4"/>
+    <circle cx="52" cy="52" r="40" fill="none" stroke="url(#metal)" stroke-width="4"/>
+
+    <path d="M73 20c-10 2-19 7-25 14-7 8-10 18-10 28 0 10 4 20 12 28L31 116l12 9 20-27c10 3 20 2 29-2l16-41-18 3-11-5-6-11c-2-6-2-12 0-22z"
+          fill="url(#metal)" stroke="url(#metalStroke)" stroke-width="1.6"/>
+
+    <path d="M76 59h29l16 13-16 13H75l10-13z" fill="url(#flowBlue)"/>
+    <circle cx="98" cy="72" r="4.8" fill="#0e56df" stroke="#69d7ff" stroke-width="1.6"/>
+    <circle cx="87" cy="60" r="3.5" fill="#0e56df" stroke="#69d7ff" stroke-width="1.2"/>
+    <circle cx="87" cy="84" r="3.5" fill="#0e56df" stroke="#69d7ff" stroke-width="1.2"/>
+    <path d="M63 72h28M63 60h20M63 84h20" stroke="#59d4ff" stroke-width="3.2" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(132 38)">
+    <text x="0" y="58" font-family="Rajdhani, Arial, sans-serif" font-size="58" font-weight="700" font-style="italic" letter-spacing="0.6" fill="url(#metal)">BENCH</text>
+    <text x="171" y="58" font-family="Rajdhani, Arial, sans-serif" font-size="58" font-weight="700" font-style="italic" letter-spacing="0.6" fill="url(#flowBlue)">FLOW</text>
+    <rect x="2" y="77" width="14" height="5" rx="1" fill="url(#flowBlue)"/>
+    <rect x="24" y="77" width="14" height="5" rx="1" fill="url(#flowBlue)"/>
+    <rect x="46" y="77" width="14" height="5" rx="1" fill="url(#flowBlue)"/>
+    <rect x="70" y="77" width="198" height="5" rx="1" fill="url(#flowBlue)"/>
+  </g>
+</svg>

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}{{ customer["name"] }} - Kunde - BenchFlow{% endblock %}
+
+{% block content %}
+<section class="page-intro">
+    <div>
+        <a href="{{ url_for('benchflow.orders') }}" class="back-link">Zurück zu den Aufträgen</a>
+        <p class="eyebrow">Kunde</p>
+        <h1>{{ customer["name"] }}</h1>
+        {% if customer["company_name"] %}
+        <p class="lead">{{ customer["company_name"] }}</p>
+        {% endif %}
+    </div>
+    <div class="hero-card compact-card">
+        <span>Aufträge</span>
+        <strong>{{ order_count }}</strong>
+        <p>Historie und laufende Fälle dieses Kunden</p>
+    </div>
+</section>
+
+<section class="dashboard-grid">
+    <article class="detail-card">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">Stammdaten</p>
+                <h2>Kontakt und Adresse</h2>
+            </div>
+        </div>
+        <dl class="detail-summary-grid customer-summary-grid">
+            <div>
+                <dt>Name</dt>
+                <dd>{{ customer["name"] }}</dd>
+            </div>
+            <div>
+                <dt>Firma</dt>
+                <dd>{{ customer["company_name"] or "-" }}</dd>
+            </div>
+            <div>
+                <dt>Telefon</dt>
+                <dd>{{ customer["phone"] or "-" }}</dd>
+            </div>
+            <div>
+                <dt>E-Mail</dt>
+                <dd>{{ customer["email"] or "-" }}</dd>
+            </div>
+            <div class="summary-address">
+                <dt>Adresse</dt>
+                <dd>{% if customer["street"] or customer["postal_code"] or customer["city"] %}{{ customer["street"] }}{% if customer["street"] and (customer["postal_code"] or customer["city"]) %}, {% endif %}{{ customer["postal_code"] }} {{ customer["city"] }}{% else %}-{% endif %}</dd>
+            </div>
+            <div>
+                <dt>Kontaktweg</dt>
+                <dd>{{ customer["preferred_contact_label"] }}</dd>
+            </div>
+        </dl>
+        {% if customer["customer_notes"] %}
+        <div class="dashboard-note">
+            <p class="eyebrow">Interne Kundennotiz</p>
+            <p class="muted">{{ customer["customer_notes"] }}</p>
+        </div>
+        {% endif %}
+    </article>
+
+    <article class="detail-card dashboard-wide">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">Auftragshistorie</p>
+                <h2>Bisherige Aufträge</h2>
+            </div>
+        </div>
+        {% with
+            empty_title="Für diesen Kunden sind noch keine Aufträge vorhanden.",
+            empty_copy="Neue Aufträge erscheinen hier automatisch."
+        %}
+            {% include "partials/order_cards.html" %}
+        {% endwith %}
+    </article>
+</section>
+{% endblock %}

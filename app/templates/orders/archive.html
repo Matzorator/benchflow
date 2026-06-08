@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Archiv - BenchFlow{% endblock %}
+
+{% block content %}
+<section class="page-intro">
+    <div>
+        <a href="{{ url_for('benchflow.orders') }}" class="back-link">Zurück zu den aktiven Aufträgen</a>
+        <p class="eyebrow">Archiv</p>
+        <h1>Archivierte Aufträge</h1>
+        <p class="lead">Abgeschlossene oder ausgeblendete Fälle sind vom aktiven Tagesgeschäft getrennt.</p>
+    </div>
+    <div class="hero-card compact-card">
+        <span>Archiv</span>
+        <strong>{{ order_count }} Aufträge</strong>
+        <p>Nur archivierte Vorgänge werden hier gezeigt.</p>
+    </div>
+</section>
+
+<section class="archive-explainer">
+    <article class="detail-card">
+        <p class="eyebrow">Archivlogik</p>
+        <h2>Kein Mischbestand mehr</h2>
+        <p class="muted">
+            Archivierte Aufträge sind bewusst aus dem Serviceboard herausgenommen. Von hier aus kannst du gezielt suchen und einzelne Fälle wiederherstellen.
+        </p>
+    </article>
+</section>
+
+<section class="filter-panel">
+    <form class="filter-form" method="get" action="{{ url_for('benchflow.archive') }}">
+        <label class="search-field">
+            <span>Suche</span>
+            <input type="text" name="q" value="{{ filters['q'] }}" placeholder="Auftragsnummer, Kunde, Hersteller, Modell, Seriennummer">
+        </label>
+        <label>
+            <span>Status</span>
+            <select name="status">
+                <option value="">Alle Status</option>
+                {% for status in statuses %}
+                <option value="{{ status }}" {% if filters["status"] == status %}selected{% endif %}>{{ status }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>
+            <span>Kategorie</span>
+            <select name="category">
+                <option value="">Alle Kategorien</option>
+                {% for value, label in categories %}
+                <option value="{{ value }}" {% if filters["category"] == value %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>
+            <span>Dokumenttyp</span>
+            <select name="document_type">
+                <option value="">Alle Dokumenttypen</option>
+                {% for value, label in document_types %}
+                {% if value %}
+                <option value="{{ value }}" {% if filters["document_type"] == value %}selected{% endif %}>{{ label }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </label>
+        <div class="filter-actions">
+            <button type="submit" class="primary-button">Filter anwenden</button>
+            <a href="{{ url_for('benchflow.archive') }}" class="ghost-button">Zurücksetzen</a>
+        </div>
+    </form>
+</section>
+
+{% with
+    empty_title="Im Archiv sind aktuell keine passenden Aufträge sichtbar.",
+    empty_copy="Passe Suche oder Filter an, um archivierte Werkstattfaelle einzublenden."
+%}
+    {% include "partials/order_cards.html" %}
+{% endwith %}
+{% endblock %}

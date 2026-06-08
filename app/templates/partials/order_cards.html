@@ -1,0 +1,70 @@
+<section class="orders-list">
+    {% if not orders %}
+    <article class="empty-card">
+        <p class="eyebrow">Keine Treffer</p>
+        <h3>{{ empty_title }}</h3>
+        <p class="muted">{{ empty_copy }}</p>
+    </article>
+    {% else %}
+    <div class="orders-list-head">
+        <span>Status</span>
+        <span>Auftrag</span>
+        <span>Kunde</span>
+        <span>Gerät</span>
+        <span>Technik</span>
+        <span>Annahme</span>
+        <span>Aktionen</span>
+    </div>
+
+    {% for order in orders %}
+    <article class="order-row{% if order['archived_at'] %} is-archived{% endif %}" data-status="{{ order['status'] }}">
+        <div class="order-cell" data-label="Status">
+            <span class="pill">{{ order["status"] }}</span>
+            {% if order["archived_at"] %}
+            <small class="archive-note">Archiviert {{ order["archived_at"][:10] }}</small>
+            {% endif %}
+        </div>
+
+        <div class="order-cell" data-label="Auftrag">
+            <strong class="order-primary">{{ order["order_number"] }}</strong>
+            <span class="order-secondary">{{ order["issue_description"] }}</span>
+            {% if order["document_hint"] %}
+            <small class="document-hint">{{ order["document_hint"] }}</small>
+            {% endif %}
+        </div>
+
+        <div class="order-cell" data-label="Kunde">
+            <strong class="order-primary"><a href="{{ url_for('benchflow.customer_detail', customer_id=order['customer_id']) }}">{{ order["customer_name"] }}</a></strong>
+            <span class="order-secondary">{{ order["customer_phone"] or "-" }}</span>
+        </div>
+
+        <div class="order-cell" data-label="Gerät">
+            <strong class="order-primary">{{ order["manufacturer"] }} {{ order["model"] }}</strong>
+            <span class="order-secondary">{{ order["category"] }} | {{ order["serial_number"] or "ohne Seriennummer" }}</span>
+        </div>
+
+        <div class="order-cell" data-label="Technik">
+            <strong class="order-primary">{{ order["technician"] }}</strong>
+        </div>
+
+        <div class="order-cell" data-label="Annahme">
+            <strong class="order-primary">{{ order["intake_date"] }}</strong>
+        </div>
+
+        <div class="order-cell order-actions" data-label="Aktionen">
+            <a href="{{ url_for('benchflow.order_detail', order_id=order['id']) }}" class="card-link">Öffnen</a>
+            {% if order["archived_at"] %}
+            <form method="post" action="{{ url_for('benchflow.restore_order', order_id=order['id']) }}">
+                <input type="hidden" name="next" value="archive">
+                <button type="submit" class="ghost-button compact-button">Wiederherstellen</button>
+            </form>
+            {% else %}
+            <form method="post" action="{{ url_for('benchflow.archive_order', order_id=order['id']) }}">
+                <button type="submit" class="ghost-button compact-button">Archivieren</button>
+            </form>
+            {% endif %}
+        </div>
+    </article>
+    {% endfor %}
+    {% endif %}
+</section>

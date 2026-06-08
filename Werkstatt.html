@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="BenchFlow - Werkstatt- und Serviceverwaltung für Reparaturaufträge, Geräteannahme und Statusverfolgung."
+    />
+    <title>🔧 BenchFlow - Werkstattverwaltung Beta 0.1</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #d8dadf 0%, #2563eb 100%);
+        background-attachment: fixed;
+        min-height: 100vh;
+      }
+    </style>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>BenchFlow - Beta 0.1</h1>
+        <p class="subtitle">Werkstatt- und Serviceverwaltung</p>
+      </header>
+
+      <main>
+        <!-- Steuerleiste -->
+        <div class="controls">
+          <input
+            type="text"
+            id="suche"
+            placeholder="🔍 Suche nach Auftragsnummer, Kunde, Hersteller oder Seriennummer..."
+            aria-label="Serviceauftrag suchen"
+          />
+
+          <label for="filterStatus" class="visually-hidden"
+            >Nach Status filtern</label
+          >
+          <select id="filterStatus">
+            <option value="">📌 Alle Status</option>
+            <option value="angenommen">Angenommen</option>
+            <option value="in_pruefung">In Prüfung</option>
+            <option value="wartet_freigabe">Wartet auf Freigabe</option>
+            <option value="wartet_teile">Wartet auf Teile</option>
+            <option value="in_reparatur">In Reparatur</option>
+            <option value="fertig">Fertig</option>
+            <option value="abholbereit">Abholbereit</option>
+            <option value="abgeschlossen">Abgeschlossen</option>
+          </select>
+
+          <label for="filterKategorie" class="visually-hidden"
+            >Nach Gerätekategorie filtern</label
+          >
+          <select id="filterKategorie">
+            <option value="">🎛️ Alle Kategorien</option>
+            <option value="gitarre">Gitarre</option>
+            <option value="bass">Bass</option>
+            <option value="keyboard">Keyboard</option>
+            <option value="synthesizer">Synthesizer</option>
+            <option value="mischpult">Mischpult</option>
+            <option value="dj_controller">DJ-Controller</option>
+            <option value="amp">Amp</option>
+            <option value="lautsprecher">Lautsprecher</option>
+            <option value="mikrofon">Mikrofon</option>
+            <option value="sonstiges">Sonstiges</option>
+          </select>
+
+          <button id="filterReset" aria-label="Filter zurücksetzen">
+            🔄 Filter zurücksetzen
+          </button>
+
+          <button id="neuAuftrag" aria-label="Neuen Serviceauftrag anlegen">
+            ➕ Neuer Auftrag
+          </button>
+        </div>
+
+        <!-- Datenmanagement -->
+        <div class="data-management-buttons">
+          <button
+            id="exportBtn"
+            class="secondary-btn"
+            title="Aufträge exportieren"
+          >
+            <span>📤</span> Export
+          </button>
+
+          <button
+            id="importBtn"
+            class="secondary-btn"
+            title="Aufträge importieren"
+          >
+            <span>📥</span> Import
+          </button>
+
+          <button id="resetBtn" class="danger-btn" title="Daten zurücksetzen">
+            <span>🔄</span> Reset
+          </button>
+
+          <input
+            type="file"
+            id="importFileInput"
+            accept=".json"
+            style="display: none"
+          />
+        </div>
+
+        <!-- Formular -->
+        <form id="auftragForm" class="form hidden" novalidate>
+          <h2>Neuen Serviceauftrag anlegen</h2>
+
+          <fieldset>
+            <legend>Kundendaten</legend>
+
+            <div class="form-group">
+              <label for="kundeName">
+                Kundenname <span class="required" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="kundeName"
+                name="kundeName"
+                placeholder="Vor- und Nachname"
+                required
+                minlength="2"
+                aria-describedby="kundeName-error"
+                data-error-required="Kundenname ist erforderlich"
+              />
+              <span
+                class="field-error"
+                id="kundeName-error"
+                aria-live="polite"
+              ></span>
+            </div>
+
+            <div class="form-group">
+              <label for="kundeEmail">E-Mail</label>
+              <input
+                type="email"
+                id="kundeEmail"
+                name="kundeEmail"
+                placeholder="kunde@example.de"
+                aria-describedby="kundeEmail-error"
+                data-error-typemismatch="Ungültige E-Mail-Adresse"
+              />
+              <span
+                class="field-error"
+                id="kundeEmail-error"
+                aria-live="polite"
+              ></span>
+            </div>
+
+            <div class="form-group">
+              <label for="kundeTelefon">
+                Telefon <span class="required" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="tel"
+                id="kundeTelefon"
+                name="kundeTelefon"
+                placeholder="+49 123 456789"
+                required
+                aria-describedby="kundeTelefon-error"
+                data-error-required="Telefon ist erforderlich"
+              />
+              <span
+                class="field-error"
+                id="kundeTelefon-error"
+                aria-live="polite"
+              ></span>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Gerätedaten</legend>
+
+            <div class="form-group">
+              <label for="kategorie">
+                Kategorie <span class="required" aria-hidden="true">*</span>
+              </label>
+              <select
+                id="kategorie"
+                name="kategorie"
+                required
+                aria-describedby="kategorie-error"
+                data-error-required="Bitte eine Kategorie wählen"
+              >
+                <option value="">-- Kategorie wählen --</option>
+                <option value="gitarre">Gitarre</option>
+                <option value="bass">Bass</option>
+                <option value="keyboard">Keyboard</option>
+                <option value="synthesizer">Synthesizer</option>
+                <option value="mischpult">Mischpult</option>
+                <option value="dj_controller">DJ-Controller</option>
+                <option value="amp">Amp</option>
+                <option value="lautsprecher">Lautsprecher</option>
+                <option value="mikrofon">Mikrofon</option>
+                <option value="sonstiges">Sonstiges</option>
+              </select>
+              <span
+                class="field-error"
+                id="kategorie-error"
+                aria-live="polite"
+              ></span>
+            </div>
+
+            <div class="form-group">
+              <label for="hersteller">
+                Hersteller <span class="required" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="hersteller"
+                name="hersteller"
+                placeholder="z.B. Fender, Yamaha, Pioneer, Korg"
+                required
+                minlength="2"
+                aria-describedby="hersteller-error"
+                data-error-required="Hersteller ist erforderlich"
+              />
+              <span
+                class="field-error"
+                id="hersteller-error"
+                aria-live="polite"
+              ></span>
+            </div>
+
+            <div class="form-group">
+              <label for="modell">
+                Modell <span class="required" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="modell"
+                name="modell"
+                placeholder="z.B. Stratocaster, Minilogue XD"
+                required
+                minlength="2"
+                aria-describedby="modell-error"
+                data-error-required="Modell ist erforderlich"
+              />
+              <span
+                class="field-error"
+                id="modell-error"
+                aria-live="polite"
+              ></span>
+            </div>
+
+            <div class="form-group">
+              <label for="seriennummer">Seriennummer</label>
+              <input
+                type="text"
+                id="seriennummer"
+                name="seriennummer"
+                placeholder="Seriennummer des Geräts"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="zubehoer">Zubehör</label>
+              <input
+                type="text"
+                id="zubehoer"
+                name="zubehoer"
+                placeholder="z.B. Netzteil, Case, Kabel, Fußschalter"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="zustand">Optischer Zustand</label>
+              <input
+                type="text"
+                id="zustand"
+                name="zustand"
+                placeholder="z.B. Kratzer oben links, verschmutzt, guter Zustand"
+              />
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Serviceinformationen</legend>
+
+            <div class="form-group">
+              <label for="fehlerbeschreibung">
+                Fehlerbeschreibung
+                <span class="required" aria-hidden="true">*</span>
+              </label>
+              <textarea
+                id="fehlerbeschreibung"
+                name="fehlerbeschreibung"
+                rows="4"
+                placeholder="Beschreibung des Fehlers laut Kunde"
+                required
+                aria-describedby="fehlerbeschreibung-error"
+                data-error-required="Bitte eine Fehlerbeschreibung eingeben"
+              ></textarea>
+              <span
+                class="field-error"
+                id="fehlerbeschreibung-error"
+                aria-live="polite"
+              ></span>
+            </div>
+
+            <div class="form-group">
+              <label for="status">
+                Status <span class="required" aria-hidden="true">*</span>
+              </label>
+              <select
+                id="status"
+                name="status"
+                required
+                aria-describedby="status-error"
+                data-error-required="Bitte einen Status wählen"
+              >
+                <option value="">-- Status wählen --</option>
+                <option value="angenommen">Angenommen</option>
+                <option value="in_pruefung">In Prüfung</option>
+                <option value="wartet_freigabe">Wartet auf Freigabe</option>
+                <option value="wartet_teile">Wartet auf Teile</option>
+                <option value="in_reparatur">In Reparatur</option>
+                <option value="fertig">Fertig</option>
+                <option value="abholbereit">Abholbereit</option>
+                <option value="abgeschlossen">Abgeschlossen</option>
+              </select>
+              <span
+                class="field-error"
+                id="status-error"
+                aria-live="polite"
+              ></span>
+            </div>
+
+            <div class="form-group">
+              <label for="techniker">Techniker</label>
+              <input
+                type="text"
+                id="techniker"
+                name="techniker"
+                placeholder="Zugewiesener Techniker"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="garantie">Garantie / Gewährleistung</label>
+              <select id="garantie" name="garantie">
+                <option value="">-- Bitte wählen --</option>
+                <option value="ja">Ja</option>
+                <option value="nein">Nein</option>
+                <option value="unbekannt">Unbekannt</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="kvErforderlich"
+                >Kostenvoranschlag erforderlich</label
+              >
+              <select id="kvErforderlich" name="kvErforderlich">
+                <option value="nein">Nein</option>
+                <option value="ja">Ja</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="geraetBild">Gerätefoto (optional)</label>
+              <input
+                type="file"
+                id="geraetBild"
+                name="geraetBild"
+                accept="image/jpeg,image/png,image/webp"
+              />
+            </div>
+          </fieldset>
+
+          <div class="button-group">
+            <button type="submit">💾 Auftrag speichern</button>
+            <button type="button" id="abbrechen">❌ Abbrechen</button>
+          </div>
+        </form>
+
+        <!-- Empty States -->
+        <div
+          id="emptyState"
+          class="empty-state"
+          style="display: none"
+          role="status"
+          aria-live="polite"
+        >
+          <div class="empty-state-icon" aria-hidden="true">🧰</div>
+          <h3 class="empty-state-title">Keine Aufträge gefunden</h3>
+          <p class="empty-state-text">
+            Es wurden keine Serviceaufträge gefunden, die den aktuellen
+            Filterkriterien entsprechen.
+          </p>
+          <button
+            class="btn btn-secondary"
+            onclick="document.getElementById('filterReset').click()"
+          >
+            Filter zurücksetzen
+          </button>
+        </div>
+
+        <div
+          id="welcomeState"
+          class="empty-state"
+          style="display: none"
+          role="status"
+          aria-live="polite"
+        >
+          <div class="empty-state-icon" aria-hidden="true">🎸</div>
+          <h3 class="empty-state-title">Willkommen bei BenchFlow!</h3>
+          <p class="empty-state-text">
+            Beginnen Sie mit dem Anlegen Ihres ersten Serviceauftrags.
+          </p>
+          <button
+            class="btn btn-primary"
+            onclick="document.getElementById('neuAuftrag').click()"
+          >
+            Ersten Auftrag anlegen
+          </button>
+        </div>
+
+        <div
+          id="noSearchResults"
+          class="empty-state"
+          style="display: none"
+          role="status"
+          aria-live="polite"
+        >
+          <div class="empty-state-icon" aria-hidden="true">🔍</div>
+          <h3 class="empty-state-title">Keine Suchergebnisse</h3>
+          <p class="empty-state-text">
+            Für "<span id="searchTerm"></span>" wurden keine passenden Aufträge
+            gefunden.
+          </p>
+          <button
+            class="btn btn-secondary"
+            onclick="
+              document.getElementById('suche').value = '';
+              document.getElementById('suche').dispatchEvent(new Event('input'));
+            "
+          >
+            Suche löschen
+          </button>
+        </div>
+
+        <!-- Tabelle -->
+        <table id="auftragTabelle" class="mitarbeiter-table">
+          <thead>
+            <tr>
+              <th scope="col" class="sortable" data-sort="auftragsnummer">
+                Auftragsnr. <span class="sort-icon" aria-hidden="true"></span>
+              </th>
+              <th scope="col" class="sortable" data-sort="kundeName">
+                Kunde <span class="sort-icon" aria-hidden="true"></span>
+              </th>
+              <th scope="col" class="sortable" data-sort="kategorie">
+                Kategorie <span class="sort-icon" aria-hidden="true"></span>
+              </th>
+              <th scope="col" class="sortable" data-sort="hersteller">
+                Hersteller <span class="sort-icon" aria-hidden="true"></span>
+              </th>
+              <th scope="col" class="sortable" data-sort="modell">
+                Modell <span class="sort-icon" aria-hidden="true"></span>
+              </th>
+              <th scope="col">Seriennummer</th>
+              <th scope="col" class="sortable" data-sort="status">
+                Status <span class="sort-icon" aria-hidden="true"></span>
+              </th>
+              <th scope="col" class="sortable" data-sort="techniker">
+                Techniker <span class="sort-icon" aria-hidden="true"></span>
+              </th>
+              <th scope="col">Aktionen</th>
+            </tr>
+          </thead>
+          <tbody id="tabelleBody"></tbody>
+        </table>
+
+        <!-- Paginierung -->
+        <nav class="pagination" role="navigation" aria-label="Seitennavigation">
+          <button id="prevPage" class="page-btn" aria-label="Vorherige Seite">
+            ← Zurück
+          </button>
+          <span id="pageInfo" aria-live="polite">Seite 1 von 1</span>
+          <button id="nextPage" class="page-btn" aria-label="Nächste Seite">
+            Weiter →
+          </button>
+        </nav>
+      </main>
+
+      <!-- Detail-Modal -->
+      <div
+        id="detailModal"
+        class="modal hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <div class="modal-content">
+          <span class="close" aria-label="Modal schließen">&times;</span>
+          <h2 id="modalTitle">Auftragsdetails</h2>
+          <div id="detailContent"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script_benchflow.js" defer></script>
+  </body>
+</html>
