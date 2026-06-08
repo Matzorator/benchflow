@@ -4,6 +4,18 @@ BenchFlow ist ein praxisnahes Werkstatt- und Service-MVP fuer Reparaturprozesse.
 
 Die laufende Mobile-Roadmap fuer den nativen SwiftUI-Client liegt in `Todo_Mobile.md`.
 
+## Entstehung und Arbeitsweise
+
+BenchFlow ist ein Eigenprojekt im Rahmen meiner Weiterbildung zum Fullstack Webentwickler.
+
+Das Projekt wurde eigenständig konzipiert, strukturiert und entwickelt.
+Bei der Umsetzung habe ich gezielt KI-gestützte Werkzeuge (u.a. als Pair-Programmer,
+für Code-Reviews und zur Klärung technischer Fragen) eingesetzt – ähnlich wie
+Entwickler heute Linter, Dokumentation oder Stack Overflow nutzen.
+
+Alle Architekturentscheidungen, der Workflow-Entwurf und das Debugging
+lagen durchgehend bei mir.
+
 ## Ziel des Projekts
 
 BenchFlow ist gleichzeitig:
