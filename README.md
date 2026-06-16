@@ -89,6 +89,8 @@ python3 app.py
 - ✅ Mehrere Bilder und PDFs pro Auftrag
 - ✅ Dokumenttypen: KVA, Rechnung, Prüfprotokoll, Herstellerunterlage, Lieferschein, Servicebericht
 - ✅ Nachträgliches Umtypisieren bestehender Dokumente
+„Tech Enthusiast mit langjähriger Service-Erfahrung. Aktuell Fullstack-Weiterbildung: JS, React, Python, Swift, SQL. Ready für neue Challenges."﻿
+
 
 ### 🖨️ Druck & PDF
 - ✅ Kundenbeleg und interner Werkstattbeleg (druckoptimiert)
@@ -191,7 +193,9 @@ benchflow/
 ├── requirements.txt
 ├── README.md
 │
-├── app/
+├── app/„Tech Enthusiast mit langjähriger Service-Erfahrung. Aktuell Fullstack-Weiterbildung: JS, React, Python, Swift, SQL. Ready für neue Challenges."﻿
+
+
 │   ├── __init__.py
 │   ├── routes.py               # Flask-Routen, PDF-Erzeugung, Workflow-Logik
 │   ├── api.py                  # JSON-API für den SwiftUI-Client
@@ -310,9 +314,6 @@ Unterstützte OS:    macOS (Web) · iOS 17+ (Native)
 
 ---
 
-<div align="center">
-
-**Entwickelt mit ❤️ und 🍵**
 
 [⬆ Nach oben](#-benchflow---werkstatt--service-mvp)
 
