@@ -1,0 +1,23 @@
+{
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Support/DateFormatters.swift" : {
+    "const-values" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DateFormatters.swiftconstvalues",
+    "dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DateFormatters.d",
+    "diagnostics" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DateFormatters.dia",
+    "object" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DateFormatters.o",
+    "swift-dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DateFormatters.swiftdeps"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Support/FormFields.swift" : {
+    "const-values" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/FormFields.swiftconstvalues",
+    "dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/FormFields.d",
+    "diagnostics" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/FormFields.dia",
+    "object" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/FormFields.o",
+    "swift-dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/FormFields.swiftdeps"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Views/NewOrderView.swift" : {
+    "const-values" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderView.swiftconstvalues",
+    "dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderView.d",
+    "diagnostics" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderView.dia",
+    "object" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderView.o",
+    "swift-dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderView.swiftdeps"
+  }
+}

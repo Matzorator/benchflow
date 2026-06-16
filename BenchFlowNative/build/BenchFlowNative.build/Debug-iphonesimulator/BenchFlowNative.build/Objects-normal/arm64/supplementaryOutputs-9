@@ -1,0 +1,23 @@
+{
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/ViewModels/CustomerListViewModel.swift" : {
+    "const-values" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListViewModel.swiftconstvalues",
+    "dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListViewModel.d",
+    "diagnostics" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListViewModel.dia",
+    "object" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListViewModel.o",
+    "swift-dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListViewModel.swiftdeps"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/ViewModels/DashboardViewModel.swift" : {
+    "const-values" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardViewModel.swiftconstvalues",
+    "dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardViewModel.d",
+    "diagnostics" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardViewModel.dia",
+    "object" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardViewModel.o",
+    "swift-dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardViewModel.swiftdeps"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Views/DashboardView.swift" : {
+    "const-values" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardView.swiftconstvalues",
+    "dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardView.d",
+    "diagnostics" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardView.dia",
+    "object" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardView.o",
+    "swift-dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardView.swiftdeps"
+  }
+}

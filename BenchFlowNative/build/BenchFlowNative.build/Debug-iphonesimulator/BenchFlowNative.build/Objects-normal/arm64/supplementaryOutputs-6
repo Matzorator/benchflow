@@ -1,0 +1,23 @@
+{
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Support/APIClient.swift" : {
+    "const-values" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIClient.swiftconstvalues",
+    "dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIClient.d",
+    "diagnostics" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIClient.dia",
+    "object" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIClient.o",
+    "swift-dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIClient.swiftdeps"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Support/APIError.swift" : {
+    "const-values" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIError.swiftconstvalues",
+    "dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIError.d",
+    "diagnostics" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIError.dia",
+    "object" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIError.o",
+    "swift-dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIError.swiftdeps"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Views/ArchiveView.swift" : {
+    "const-values" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ArchiveView.swiftconstvalues",
+    "dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ArchiveView.d",
+    "diagnostics" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ArchiveView.dia",
+    "object" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ArchiveView.o",
+    "swift-dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ArchiveView.swiftdeps"
+  }
+}

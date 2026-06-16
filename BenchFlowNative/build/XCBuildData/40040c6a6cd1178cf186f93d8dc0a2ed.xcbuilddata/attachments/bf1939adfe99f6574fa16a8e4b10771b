@@ -1,0 +1,219 @@
+{
+  "" : {
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowNative-primary.dia",
+    "emit-module-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowNative-primary-emit-module.d",
+    "emit-module-diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowNative-primary-emit-module.dia",
+    "pch" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowNative-primary-Bridging-header.pch",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowNative-primary.swiftdeps"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/BenchFlowNativeApp.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowNativeApp.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowNativeApp.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowNativeApp.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowNativeApp.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowNativeApp.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowNativeApp.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowNativeApp.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowNativeApp~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Support/APIClient.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIClient.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIClient.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIClient.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIClient.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIClient.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIClient.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIClient.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIClient~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Support/APIError.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIError.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIError.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIError.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIError.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIError.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIError.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIError.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/APIError~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Support/BenchFlowModels.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowModels.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowModels.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowModels.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowModels.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowModels.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowModels.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowModels.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BenchFlowModels~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Support/BrowserSheet.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BrowserSheet.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BrowserSheet.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BrowserSheet.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BrowserSheet.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BrowserSheet.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BrowserSheet.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BrowserSheet.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/BrowserSheet~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Support/DateFormatters.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DateFormatters.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DateFormatters.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DateFormatters.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DateFormatters.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DateFormatters.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DateFormatters.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DateFormatters.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DateFormatters~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Support/FormFields.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/FormFields.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/FormFields.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/FormFields.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/FormFields.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/FormFields.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/FormFields.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/FormFields.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/FormFields~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Support/ToastModifier.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ToastModifier.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ToastModifier.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ToastModifier.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ToastModifier.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ToastModifier.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ToastModifier.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ToastModifier.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ToastModifier~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/ViewModels/CustomerDetailViewModel.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailViewModel.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailViewModel.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailViewModel.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailViewModel.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailViewModel.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailViewModel.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailViewModel.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailViewModel~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/ViewModels/CustomerListViewModel.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListViewModel.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListViewModel.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListViewModel.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListViewModel.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListViewModel.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListViewModel.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListViewModel.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListViewModel~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/ViewModels/DashboardViewModel.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardViewModel.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardViewModel.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardViewModel.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardViewModel.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardViewModel.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardViewModel.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardViewModel.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardViewModel~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/ViewModels/NewOrderViewModel.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderViewModel.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderViewModel.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderViewModel.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderViewModel.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderViewModel.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderViewModel.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderViewModel.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderViewModel~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/ViewModels/OrderDetailViewModel.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderDetailViewModel.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderDetailViewModel.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderDetailViewModel.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderDetailViewModel.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderDetailViewModel.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderDetailViewModel.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderDetailViewModel.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderDetailViewModel~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/ViewModels/OrdersViewModel.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrdersViewModel.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrdersViewModel.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrdersViewModel.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrdersViewModel.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrdersViewModel.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrdersViewModel.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrdersViewModel.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrdersViewModel~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Views/ArchiveView.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ArchiveView.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ArchiveView.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ArchiveView.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ArchiveView.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ArchiveView.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ArchiveView.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ArchiveView.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/ArchiveView~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Views/CustomerDetailView.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailView.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailView.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailView.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailView.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailView.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailView.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailView.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailView~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Views/CustomerListView.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListView.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListView.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListView.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListView.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListView.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListView.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListView.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListView~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Views/DashboardView.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardView.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardView.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardView.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardView.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardView.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardView.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardView.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/DashboardView~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Views/NewOrderView.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderView.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderView.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderView.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderView.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderView.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderView.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderView.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/NewOrderView~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Views/OrderDetailView.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderDetailView.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderDetailView.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderDetailView.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderDetailView.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderDetailView.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderDetailView.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderDetailView.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderDetailView~partial.swiftmodule"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Views/OrderListView.swift" : {
+    "const-values" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderListView.swiftconstvalues",
+    "dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderListView.d",
+    "diagnostics" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderListView.dia",
+    "index-unit-output-path" : "/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderListView.o",
+    "llvm-bc" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderListView.bc",
+    "object" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderListView.o",
+    "swift-dependencies" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderListView.swiftdeps",
+    "swiftmodule" : "/tmp/BenchFlowNativeBuild/Intermediates.noindex/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/OrderListView~partial.swiftmodule"
+  }
+}

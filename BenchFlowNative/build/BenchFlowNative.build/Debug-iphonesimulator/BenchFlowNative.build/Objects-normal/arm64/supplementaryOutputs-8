@@ -1,0 +1,23 @@
+{
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/ViewModels/CustomerDetailViewModel.swift" : {
+    "const-values" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailViewModel.swiftconstvalues",
+    "dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailViewModel.d",
+    "diagnostics" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailViewModel.dia",
+    "object" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailViewModel.o",
+    "swift-dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailViewModel.swiftdeps"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Views/CustomerDetailView.swift" : {
+    "const-values" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailView.swiftconstvalues",
+    "dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailView.d",
+    "diagnostics" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailView.dia",
+    "object" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailView.o",
+    "swift-dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerDetailView.swiftdeps"
+  },
+  "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/Sources/Views/CustomerListView.swift" : {
+    "const-values" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListView.swiftconstvalues",
+    "dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListView.d",
+    "diagnostics" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListView.dia",
+    "object" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListView.o",
+    "swift-dependencies" : "/Users/h.2024.0171/Documents/Playground/BenchFlow/BenchFlowNative/build/BenchFlowNative.build/Debug-iphonesimulator/BenchFlowNative.build/Objects-normal/arm64/CustomerListView.swiftdeps"
+  }
+}
