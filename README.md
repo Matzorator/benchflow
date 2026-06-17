@@ -296,7 +296,7 @@ lagen durchgehend bei mir.
 **Matthias Osypka**
 
 [![Email](https://img.shields.io/badge/Email-mosypka@tutamail.com-blue?style=flat-square&logo=mail.ru)](mailto:mosypka@tutamail.com)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=flat-square&logo=github)](https://github.com/Matzorator)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=flat-square&logo=github)](https://github.com/mosypka)
 
 💡 **Suche nach:** Entwickler Position im Bereich Fullstack Web Entwicklung
 
